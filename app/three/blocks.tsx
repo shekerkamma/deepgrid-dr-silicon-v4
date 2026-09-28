@@ -83,7 +83,7 @@ export function ProductsScene() {
         <figcaption className="s3-caption">Drag to rotate. Conceptual model, not a mask layout.</figcaption>
       </figure>
       <div>
-        <h2 id="s3-parts">One footprint, two chips</h2>
+        <h2 id="s3-parts">Same package, same pinout, either chip</h2>
         <p>{v === 'lite'
           ? 'DG32-LITE: two RISC-V cores in hardware lockstep, the motor-drive peripherals and the FOC maths, at 50 MHz.'
           : 'DG32-2DOM: the same lockstep core and pinout, plus an INT8 attention engine on its own, faster clock.'}</p>
