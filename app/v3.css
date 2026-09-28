@@ -51,6 +51,8 @@ p { text-wrap: pretty; }
 .mobile-sheet .mega-nav { display: grid; gap: 0; max-width: none; min-height: 0; }
 .mobile-sheet .mega-nav > a, .mobile-sheet .mega-trigger { justify-content: space-between; width: 100%; padding: .95rem 0; border-bottom: 1px solid var(--line); font-size: var(--sc-t-body); }
 .mobile-sheet .mega-nav > a { justify-content: flex-start; gap: .6rem; }
+/* The current section in the sheet: copper text, as a selected item is marked everywhere else. */
+.mobile-sheet .mega-nav > a.active, .mobile-sheet .mega-trigger.active { color: var(--copper); }
 .mobile-sheet .mega-link { margin-left: 0; }
 .mobile-sheet .mega-item { display: grid; }
 .mobile-sheet .mega-panel { position: static; width: auto; padding: .25rem 0 .75rem; background: none; border: 0; box-shadow: none; translate: none !important; }
