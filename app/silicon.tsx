@@ -246,6 +246,12 @@ export default function Silicon({
     // Adjusted camera position for direct, high-contrast visibility
     camera.position.set(6.8, 8.8, 9.8);
     camera.lookAt(0, 0, 0);
+    // The package spins and can be dragged to any tilt, so a corner can point anywhere on a
+    // sphere: 4.96 for the lead tips, 5.06 for the lifted lid. At a fixed distance a corner ran
+    // off the stage edge; resize() backs the camera off until that sphere fits the narrower
+    // of the two view angles.
+    const baseDistance = camera.position.length();
+    const fitRadius = 5.1;
 
     // Studio semiconductor lighting
     scene.add(new THREE.HemisphereLight(0xffffff, 0x1f2937, 2.6));
@@ -591,6 +597,9 @@ export default function Silicon({
       lh = h;
       renderer.setSize(w, h, false);
       camera.aspect = w / h;
+      const halfV = THREE.MathUtils.degToRad(camera.fov / 2);
+      const half = Math.min(halfV, Math.atan(Math.tan(halfV) * camera.aspect));
+      camera.position.setLength(Math.max(baseDistance, fitRadius / Math.sin(half)));
       camera.updateProjectionMatrix();
     };
     resize();
