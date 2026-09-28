@@ -16,7 +16,7 @@ const path = (u) => new URL(u, BASE).pathname.replace(/\/$/, '');
 const b = await chromium.launch();
 
 async function landed(p, want, via) {
-  await p.waitForURL((u) => path(u.toString()) === want, { timeout: 15000 }).catch(() => {});
+  await p.waitForURL((u) => path(u.toString()).replace(/\.html$/, '') === want, { timeout: 15000 }).catch(() => {});
   const got = path(p.url()).replace(/\.html$/, ''); // Pages serves /x.html as the same page as /x
   let h = { h1: '', nf: false };
   for (let t = 0; t < 4; t++) {
