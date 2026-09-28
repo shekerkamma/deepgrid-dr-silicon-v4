@@ -1164,9 +1164,9 @@ html{scrollbar-color:#46504a var(--background);caret-color:var(--copper)}
 
 .dr-doc-highlights-title {
   font: var(--text-meta) var(--font-mono);
-  font-size: .7rem;
-  letter-spacing: 1px;
-  color: #93a582;
+  font-size: var(--sc-t-meta);
+  letter-spacing: var(--sc-track-meta);
+  color: var(--ink-2);
 }
 
 .dr-doc-highlights {
