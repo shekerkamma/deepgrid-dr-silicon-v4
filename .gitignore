@@ -57,3 +57,5 @@ next-env.d.ts
 /public/vendor/
 *.tmp
 verify-shots/
+.gstack/
+.playwright-mcp/
