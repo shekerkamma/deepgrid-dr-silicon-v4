@@ -1,0 +1,187 @@
+/* The film moment on an evidence card. The poster is a real deck slide, so the frame is legible
+   before anything loads; the play control sits over it and gets out of the way once the clip runs.
+   Tokens are the ones globals.css and dr.css already define. */
+.dr-ev-clip { margin: 0; }
+.dr-ev-clip-frame { position: relative; }
+
+.dr-ev-clip-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--background);
+  object-fit: cover;
+  border-bottom: 1px solid var(--rule);
+}
+
+.dr-ev-clip-play {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--copper);
+  border-radius: var(--sc-radius-sm);
+  /* Opaque enough to carry text over any frame of the slide behind it. Expressed from the ink
+     token rather than as a new hex, per The Alpha Is Not A Colour Rule in DESIGN.md. */
+  background: color-mix(in srgb, var(--background) 92%, transparent);
+  color: var(--copper);
+  font-size: var(--text-control);
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+.dr-ev-clip-play:hover { background: var(--background); color: var(--ring); }
+.dr-ev-clip-play:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+.dr-ev-clip-cap {
+  display: grid;
+  gap: 3px;
+  padding: 10px 14px 0;
+  color: var(--foreground);
+  font-size: var(--text-meta);
+  line-height: 1.5;
+}
+.dr-ev-clip-cap .mono {
+  color: var(--ink-2);
+  letter-spacing: var(--sc-track-meta);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dr-ev-clip-play { transition: none; }
+}
+
+/* The card's media slot was sized for a cropped still: a fixed 16/10 box with overflow hidden.
+   A clip brings its own 16/9 frame and a caption underneath, so the slot has to stop cropping. */
+.dr-evidence-media-clip {
+  aspect-ratio: auto;
+  overflow: visible;
+  padding-bottom: 12px;
+}
+
+/* The narration, set as the quotation it is. */
+.dr-ev-clip-said {
+  margin: 4px 0 0;
+  padding-left: 12px;
+  border-left: 1px solid var(--rule);
+}
+.dr-ev-clip-said p {
+  margin: 0;
+  color: var(--foreground);
+  font-size: var(--sc-t-body);
+  line-height: var(--sc-lh-body);
+  text-wrap: pretty;
+}
+.dr-ev-clip-said cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-size: var(--text-meta);
+  letter-spacing: var(--sc-track-meta);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* The ladder was a five-column grid of cropped stills: at 1440px that is a 223px column, which was
+   fine for a thumbnail and three lines. A card now carries a 1600x900 deck slide, a film and the
+   narration, and a slide rendered 223px wide is unreadable, which is the defect this whole change
+   set out to fix. One row per kind instead: the slide gets half the width, the argument the rest. */
+.dr-evidence-ladder { grid-template-columns: 1fr; gap: 20px; list-style: none; margin: 48px 0 56px; padding: 0; }
+
+.dr-evidence-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: start;
+  min-height: 0;
+}
+.dr-evidence-card .dr-evidence-media-clip { padding-bottom: 16px; }
+.dr-evidence-card .dr-evidence-content { padding: 22px 24px 24px; }
+
+/* The hover lift belongs to a card in a grid of cards, not to a full-width row. */
+.dr-evidence-card:hover { transform: none; }
+
+@media (max-width: 900px) {
+  .dr-evidence-card { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- FilmMoment: a film moment inside an argument ----------
+   At rest: a small slide frame and the narration beside it, on one hairline row. Open: the player
+   takes the full width of the text column and the narration sits under it. */
+.dr-moment {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  margin: 22px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+}
+.dr-moment.is-open {
+  grid-template-columns: minmax(0, 1fr);
+}
+.dr-moment-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--sc-radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color .15s ease;
+}
+.dr-moment-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.dr-moment-play {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: var(--sc-radius-sm);
+  background: color-mix(in srgb, var(--background) 90%, transparent);
+  color: var(--copper);
+  font: var(--text-meta) / 1.3 var(--font-mono);
+  letter-spacing: var(--sc-track-meta);
+}
+.dr-moment-thumb:hover {
+  border-color: var(--copper);
+}
+.dr-moment-thumb:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.dr-moment-said p {
+  margin: 0;
+  font-size: var(--text-control);
+  line-height: 1.6;
+  color: var(--foreground);
+  text-wrap: pretty;
+}
+.dr-moment-said cite {
+  display: block;
+  margin-top: 8px;
+  font: var(--text-meta) / 1.4 var(--font-mono);
+  font-style: normal;
+  letter-spacing: var(--sc-track-meta);
+  color: var(--ink-2);
+}
+@media (max-width: 560px) {
+  .dr-moment {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dr-moment-thumb {
+    max-width: 320px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dr-moment-thumb { transition: none; }
+}

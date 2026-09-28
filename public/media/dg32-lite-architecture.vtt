@@ -1,0 +1,278 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:11.374
+DG32-LITE is Deepgrid Semi's motor-control chip, and it makes one argument: hardware lockstep safety no longer needs an automotive-class microcontroller.
+
+2
+00:00:11.924 --> 00:00:18.214
+Two RISC-V cores check each other on every write, inside a nine-by-nine millimetre package.
+
+3
+00:00:18.764 --> 00:00:30.501
+First silicon rides the September 2026 multi-project shuttle, so every figure you will see is a design value, verified in simulation and timing analysis.
+
+4
+00:00:31.700 --> 00:00:33.990
+Here is the whole case in brief.
+
+5
+00:00:34.540 --> 00:00:45.093
+DG32-LITE puts a microcontroller, its motor peripherals and its own safety monitor, built in hardware, into one one-hundred-thirty-nanometre part.
+
+6
+00:00:45.643 --> 00:00:48.922
+The two cores check each other on every stored write.
+
+7
+00:00:49.472 --> 00:01:00.511
+In simulation the current loop reaches about one hundred kilohertz, and a disagreement is latched within thirty-nine cycles, driving a pin that can shut the power bridge off.
+
+8
+00:01:01.710 --> 00:01:03.193
+Why build it this way?
+
+9
+00:01:03.743 --> 00:01:08.325
+A motor drive switches power transistors thousands of times a second.
+
+10
+00:01:08.875 --> 00:01:17.206
+If the CPU silently computes a wrong value, it writes a wrong PWM edge, and a wrong edge can short a bridge leg.
+
+11
+00:01:17.756 --> 00:01:24.001
+Entry-level motor MCUs catch faults with watchdogs and periodic software self-test.
+
+12
+00:01:24.551 --> 00:01:31.034
+Hardware lockstep has lived in automotive parts such as AURIX, S32K and Hercules.
+
+13
+00:01:32.230 --> 00:01:36.330
+The architecture is six groups of blocks around a single bus.
+
+14
+00:01:36.880 --> 00:01:46.633
+The safety core, the memory and the supervisors sit on one side of it; the motor drive, sensing and math, and connectivity and test sit on the other.
+
+15
+00:01:47.183 --> 00:01:54.173
+Only the CPU and a DMA can start a transfer, and every transfer takes a predictable time.
+
+16
+00:01:54.723 --> 00:02:01.124
+Because the chip has no debugger halt, a bad address returns an error rather than freezing it.
+
+17
+00:02:02.320 --> 00:02:06.802
+Every design choice traces back to a limit found while hardening the chip.
+
+18
+00:02:07.352 --> 00:02:11.741
+Nothing outside can halt the CPU, so nothing is allowed to hang.
+
+19
+00:02:12.291 --> 00:02:19.491
+The lockstep core tops out between fifty-five and sixty-two megahertz, so the entire die is clocked at fifty.
+
+20
+00:02:20.041 --> 00:02:26.504
+Each instruction costs about eight clock cycles, too slow for the loop, so the loop moved into hardware.
+
+21
+00:02:27.055 --> 00:02:32.576
+And with no spare memory bits, the chip goes out without error correction, stated plainly.
+
+22
+00:02:33.780 --> 00:02:35.455
+This is the safety core.
+
+23
+00:02:36.005 --> 00:02:38.349
+MAIN runs the application.
+
+24
+00:02:38.899 --> 00:02:46.488
+CHECKER runs the same instructions two cycles later, on the same inputs, and the comparator checks every committed store.
+
+25
+00:02:47.038 --> 00:02:51.109
+On a mismatch, the first cause is latched and FAULT_N goes low.
+
+26
+00:02:51.659 --> 00:02:57.980
+Route that pin to the gate-driver enable, and the bridge turns off in hardware, without waiting for firmware.
+
+27
+00:02:59.180 --> 00:03:03.225
+Reaching running code takes no helper processor or debugger.
+
+28
+00:03:03.775 --> 00:03:14.734
+Hard-wired ROM logic greets the serial console, confirms the image in external flash is valid, loads it into SRAM and hands over control.
+
+29
+00:03:15.284 --> 00:03:23.375
+A board with empty flash is not stranded either: the ROM drops into a serial monitor that can program and start it.
+
+30
+00:03:23.925 --> 00:03:29.099
+The price is copying code at every boot, since nothing runs directly out of flash.
+
+31
+00:03:30.300 --> 00:03:35.561
+Every expensive step of field-oriented control runs in a dedicated block.
+
+32
+00:03:36.111 --> 00:03:40.135
+Encoder and Hall inputs give position, with edge timestamps.
+
+33
+00:03:40.685 --> 00:03:46.384
+The PWM fires the ADC at the centre of each period, where ripple is lowest.
+
+34
+00:03:46.934 --> 00:03:58.831
+The CORDIC computes the Park transforms, the CPU runs only the two PI regulators, and the PWM block applies the new duty cycles, with a hardware brake behind it.
+
+35
+00:04:00.030 --> 00:04:01.920
+Here is what one loop costs.
+
+36
+00:04:02.470 --> 00:04:06.137
+The current sample takes one hundred seventy-seven cycles.
+
+37
+00:04:06.687 --> 00:04:10.170
+Each CORDIC operation takes fifty-three to fifty-eight.
+
+38
+00:04:10.720 --> 00:04:14.124
+The regulators cost about eight cycles per instruction.
+
+39
+00:04:14.674 --> 00:04:20.545
+Together the hardware part is about three hundred cycles, and it is the same at every loop rate.
+
+40
+00:04:21.095 --> 00:04:24.456
+At twenty kilohertz, that is twelve percent of the period.
+
+41
+00:04:25.660 --> 00:04:28.627
+So the question becomes how much firmware fits.
+
+42
+00:04:29.177 --> 00:04:36.930
+At ten kilohertz there are about forty-seven hundred cycles left: enough for a full current and speed loop with an observer.
+
+43
+00:04:37.480 --> 00:04:41.515
+At twenty kilohertz, twenty-two hundred, enough for field-weakening.
+
+44
+00:04:42.065 --> 00:04:46.051
+At fifty kilohertz, seven hundred, an inner current loop only.
+
+45
+00:04:46.601 --> 00:04:49.968
+The simulated ceiling is about one hundred kilohertz.
+
+46
+00:04:51.170 --> 00:04:53.107
+Timing tells the same story.
+
+47
+00:04:53.657 --> 00:05:05.512
+After place-and-route, the GPIO, DShot, QSPI and PWM blocks all run above one hundred sixty-five megahertz, and CORDIC and the supervisor above ninety.
+
+48
+00:05:06.062 --> 00:05:10.916
+Only the lockstep core, at fifty-five to sixty-two megahertz, sets the clock.
+
+49
+00:05:11.466 --> 00:05:14.069
+No peripheral is ever the timing wall.
+
+50
+00:05:15.270 --> 00:05:23.860
+All of it fits a nine-by-nine millimetre QFN with sixty-four pins: forty-four signals, and the rest power and ground.
+
+51
+00:05:24.410 --> 00:05:34.758
+Seven pins drive the bridge, six read position, two carry the analog current input, and a single pin, FAULT_N, shuts the drive down in hardware.
+
+52
+00:05:35.308 --> 00:05:42.517
+Because DG32-2DOM uses exactly this pinout, a board built for one takes either chip.
+
+53
+00:05:43.720 --> 00:05:54.009
+DG32-2DOM keeps everything in DG32-LITE and adds an INT8 attention engine on its own one hundred fourteen megahertz clock.
+
+54
+00:05:54.559 --> 00:06:01.321
+It reaches memory through clock-domain-crossing bridges, so it never stalls the fifty megahertz control core.
+
+55
+00:06:01.871 --> 00:06:07.089
+Its output is bit-exact to the software model, and timing closes at both clocks.
+
+56
+00:06:07.639 --> 00:06:12.324
+It is designed for bearing-fault and anomaly detection inside the drive.
+
+57
+00:06:13.520 --> 00:06:20.257
+Against the STM32G0, the entry-level incumbent, the comparison is honest.
+
+58
+00:06:20.807 --> 00:06:30.288
+DG32 leads on hardware lockstep, native DShot, hardware CORDIC and the on-chip AI variant, with an open RISC-V core.
+
+59
+00:06:30.838 --> 00:06:40.557
+The G0 leads clearly on its twelve-bit multi-channel ADC, embedded flash, USB and CAN-FD, and on production maturity.
+
+60
+00:06:41.760 --> 00:06:45.388
+The roadmap works through those weaknesses, largest first.
+
+61
+00:06:45.938 --> 00:06:52.367
+First silicon, on the September twenty twenty-six shuttle, tests the simulations against real parts.
+
+62
+00:06:52.917 --> 00:07:01.264
+The following spin tackles the two largest gaps: an analog converter with twelve bits and several channels, and flash on the die.
+
+63
+00:07:01.814 --> 00:07:05.670
+Only after that come CAN-FD and interactive debugging.
+
+64
+00:07:06.220 --> 00:07:12.687
+DG32-2DOM advances meanwhile, its design finished and now in physical trials.
+
+65
+00:07:13.890 --> 00:07:16.044
+Three ideas to hold on to.
+
+66
+00:07:16.594 --> 00:07:21.739
+The protection is built into the processor itself, not bolted on in software.
+
+67
+00:07:22.289 --> 00:07:29.463
+The costly parts of motor control are dedicated hardware, so the price of one loop is fixed and known in advance.
+
+68
+00:07:30.013 --> 00:07:33.207
+And the weaknesses are named, with fixes scheduled.
+
+69
+00:07:33.757 --> 00:07:42.283
+None of this has yet been measured on silicon, and no functional-safety certification is claimed; bring-up is where the numbers become real.
+

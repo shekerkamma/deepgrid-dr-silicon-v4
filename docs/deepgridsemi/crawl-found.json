@@ -1,0 +1,486 @@
+[
+ {
+  "url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=600&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/",
+   "/accelerators",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=400&h=600&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/",
+   "/accelerators",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://cdn.cookielaw.org/logos/b0a5f2cc-0b29-4907-89bf-3f6b380a03c8/018dd7ba-75a3-7a98-b7bc-0d70fb69aad3/7527208a-354f-480b-993f-1fa9d3354160/1280px-Qualcomm-Logo.svg.png",
+  "type": "image/png",
+  "pages": [
+   "/",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=600&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/",
+   "/accelerators",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=600&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/",
+   "/accelerators",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg",
+  "type": "image/svg+xml",
+  "pages": [
+   "/",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg",
+  "type": "image/svg+xml",
+  "pages": [
+   "/",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg",
+  "type": "image/svg+xml",
+  "pages": [
+   "/",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/dgridsemi.png",
+  "type": "image/png",
+  "pages": [
+   "/",
+   "/about/story",
+   "/about/team",
+   "/about/achievements",
+   "/accelerators",
+   "/contact",
+   "/market-segment",
+   "/partners",
+   "/products/dg-a100",
+   "/products/dg-d100",
+   "/products/dg-h100",
+   "/products/dg-r100",
+   "/products/dg-s100",
+   "/products/dg-t100",
+   "/resources/blog",
+   "/resources/docs",
+   "/resources/videos",
+   "/software/dgrid-sdk",
+   "/use-cases/adas",
+   "/use-cases/humanoids",
+   "/use-cases/mobility",
+   "/use-cases/robotics"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/hero.mp4",
+  "type": "video/mp4",
+  "pages": [
+   "/",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/Pa-vWgG0JeY/sddefault.jpg",
+  "type": "image/jpeg",
+  "pages": [
+   "/",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://www.gstatic.com/youtube/img/icons/mweb/youtube_fill/logo/v2/67px.svg",
+  "type": "image/svg+xml",
+  "pages": [
+   "/"
+  ]
+ },
+ {
+  "url": "https://yt3.ggpht.com/ytc/AIdro_nkSHxjlAkYKJsck5xcKsGVx-N9d1RxA5HOBJF9N-0RQl0=s68-c-k-c0x00ffffff-no-rj",
+  "type": "image/jpeg",
+  "pages": [
+   "/",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/undefined",
+  "type": "dom",
+  "pages": [
+   "/",
+   "/accelerators",
+   "/partners"
+  ]
+ },
+ {
+  "url": "data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230ea5e9' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E",
+  "type": "dom",
+  "pages": [
+   "/",
+   "/partners"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/story"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/story"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=800&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/story"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/story",
+   "/resources/blog"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/story"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=800&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/story"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=1920&h=1080&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/story"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=800&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/story"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/team"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/aravind.png",
+  "type": "image/png",
+  "pages": [
+   "/about/team"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/team/jayesh-loya.jpg",
+  "type": "text/html",
+  "pages": [
+   "/about/team"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/team/krishna-mohan-r.jpg",
+  "type": "text/html",
+  "pages": [
+   "/about/team"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/team/ayaz-khan.jpg",
+  "type": "text/html",
+  "pages": [
+   "/about/team"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/prashanth.png",
+  "type": "image/png",
+  "pages": [
+   "/about/team"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/achievements"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/award1.jpeg",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/achievements"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/award2.jpeg",
+  "type": "image/jpeg",
+  "pages": [
+   "/about/achievements"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&h=1080&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/accelerators"
+  ]
+ },
+ {
+  "url": "https://maps.gstatic.com/mapfiles/openhand_8_8.cur",
+  "type": "image/bmp",
+  "pages": [
+   "/contact"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/3dsemiconductor.png",
+  "type": "image/png",
+  "pages": [
+   "/products/dg-a100",
+   "/products/dg-d100",
+   "/products/dg-h100",
+   "/products/dg-r100",
+   "/products/dg-s100",
+   "/products/dg-t100"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/dg-a100-product.png",
+  "type": "text/html",
+  "pages": [
+   "/products/dg-a100",
+   "/products/dg-d100",
+   "/products/dg-h100",
+   "/products/dg-r100",
+   "/products/dg-s100",
+   "/products/dg-t100"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/architecture.jpg",
+  "type": "image/jpeg",
+  "pages": [
+   "/products/dg-a100"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/blog"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/blog"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/videos-hero-bg.png",
+  "type": "image/png",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/-iY2KLMsZqw/sddefault.jpg",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/aSZdrH3EerY/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGcgZyhnMA8=&rs=AOn4CLBxD3F6QTJdY9psvxkpk-SM-UlJQA",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/UaNaELUh1JM/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AH-CYACugWKAgwIABABGGsgEyh_MA8=&rs=AOn4CLBgJXro-vpyXkNlgckOKc2vXh5V2Q",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/0rEnXT__B7M/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AH-CYACugWKAgwIABABGEwgEyh_MA8=&rs=AOn4CLAVkS9EwilUbL83elF2y6gQp7qy3g",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/5YDEm77Tndc/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AH-CYACugWKAgwIABABGGogEyh_MA8=&rs=AOn4CLB_oRFS6ezuvzw9pf42uQ6kSnl1-w",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/FD2xhoQYwKA/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AHwCIAC0AWKAgwIABABGC0gUyh_MA8=&rs=AOn4CLDf2nGNXd3amA0Okmzrf7LO0TqkmA",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/knNspgTt7rM/sddefault.jpg",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/gGoUd4a-DLw/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AHOBoAC3gOKAgwIABABGGUgXihUMA8=&rs=AOn4CLBpyuIMUfFWtLIuTijaxYKWMPYaFQ",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://yt3.ggpht.com/rl_aTUxF5AIjkz7odZgxPmI4fpEDfrPrhJNYJXJMpivBwVjVoP7f7XHcGHNTXVhTEtg6AogD=s68-c-k-c0x00ffffff-no-rj",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/vjA720O8RcE/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AH-CYACugWKAgwIABABGG8gEyh_MA8=&rs=AOn4CLD_Oa1HJKQs85nIcDmWgtEZBDBy7g",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/fvz-Uhi8vhU/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AHOBoAC3gOKAgwIABABGGUgZShlMA8=&rs=AOn4CLCo08VY6q6hFYM6wRglG7rfhKPjjQ",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/pmIK4nGp5xg/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGFEgXShlMA8=&rs=AOn4CLBWba1uYm-ZHwPQgmUhkP9-AqzhlA",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/JnnzI768PZ8/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AHaBoAC0AWKAgwIABABGGUgWihLMA8=&rs=AOn4CLDpAbebzr1eChK0nlECDBg-JDRSgg",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/x7pi4APnNik/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AH-CYACugWKAgwIABABGGsgEyh_MA8=&rs=AOn4CLBdm-BneO8JcCuzCMi1NThtmPAWVg",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/Kn9Q4THjG6c/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGIgZShVMA8=&rs=AOn4CLBhgbkEwdC_Dezwog-mnOkvqJAKQA",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://i.ytimg.com/vi/Bx9gC9iW99k/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AHOBoAC3gOKAgwIABABGGQgZChkMA8=&rs=AOn4CLAY4G-x9e8y83V3iAmnLPHKwEyp8Q",
+  "type": "image/jpeg",
+  "pages": [
+   "/resources/videos"
+  ]
+ },
+ {
+  "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+  "type": "image/jpeg",
+  "pages": [
+   "/software/dgrid-sdk"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/sdk.png",
+  "type": "image/png",
+  "pages": [
+   "/software/dgrid-sdk"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/3dvision.png",
+  "type": "image/png",
+  "pages": [
+   "/use-cases/humanoids"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/adaptivelearning.png",
+  "type": "image/png",
+  "pages": [
+   "/use-cases/humanoids"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/roboarm.png",
+  "type": "image/png",
+  "pages": [
+   "/use-cases/humanoids"
+  ]
+ },
+ {
+  "url": "https://deepgridsemi.com/naturallanguage.png",
+  "type": "image/png",
+  "pages": [
+   "/use-cases/humanoids"
+  ]
+ }
+]

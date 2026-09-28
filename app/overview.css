@@ -1,0 +1,35 @@
+/* Depth on the front door, by differential movement between planes.
+ *
+ * The die canvas, the shade and the copy travel at different rates as the hero leaves, which is
+ * the cheapest premium signal available and the one thing the reference build got right: depth
+ * reads from planes moving against each other, not from a parallax effect applied to everything.
+ *
+ * Built on CSS scroll-driven animations rather than a scroll engine, so it costs no JavaScript and
+ * no second scroll system. Three guards, each load-bearing:
+ *   - @supports: browsers without view() timelines get the static hero, which is already correct.
+ *   - prefers-reduced-motion: no-preference, so a reader with motion off gets nothing at all.
+ *   - transform and opacity only, which is what the interface guidelines allow to animate.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .dr-hero .hero-canvas,
+    .dr-hero .hero-copy,
+    .dr-hero .hero-annotation {
+      animation-timeline: view();
+      animation-range: contain 0% exit 100%;
+      animation-fill-mode: both;
+      will-change: transform;
+    }
+
+    /* Furthest plane moves least, so the die appears to sit behind the words. */
+    .dr-hero .hero-canvas { animation-name: dg-plane-far; }
+    /* The copy is the nearest plane and leads the exit. */
+    .dr-hero .hero-copy { animation-name: dg-plane-near; }
+    /* The annotation sits between them and carries the parallax that sells the gap. */
+    .dr-hero .hero-annotation { animation-name: dg-plane-mid; }
+  }
+}
+
+@keyframes dg-plane-far { to { transform: translate3d(0, 4%, 0); } }
+@keyframes dg-plane-mid { to { transform: translate3d(0, -6%, 0); } }
+@keyframes dg-plane-near { to { transform: translate3d(0, -14%, 0); opacity: .82; } }

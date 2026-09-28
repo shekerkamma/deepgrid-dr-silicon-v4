@@ -1,0 +1,117 @@
+name: Build and deploy GitHub Pages
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['source/**']
+  pull_request:
+    paths-ignore: ['source/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+# Pages keeps its own deployment queue, separate from Actions runs. cancel-in-progress cancels a
+# *run*, which does nothing about a deployment already finalising, so two pushes close together
+# collided: the second failed with "due to in progress deployment, please cancel <sha> first".
+# A stable group that queues rather than cancels lets the second wait for the first instead.
+concurrency:
+  group: pages-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Derived from the repository name, so one source tree builds correctly in every repo that
+      # hosts it. The same commit serves /deepgrid-dr-silicon/, /deepgrid-dr-silicon_new/ and
+      # /deepgrid-dr-silicon-v2/; hardcoding one of them 404s every asset and link in the other two.
+      # For a custom domain set PAGES_BASE and NEXT_PUBLIC_PAGES_BASE to / and PAGES_DOMAIN to the host.
+      PAGES_BASE: /${{ github.event.repository.name }}/
+      # Baked into the bundle so server-rendered HTML carries correct hrefs, not just hydrated HTML.
+      NEXT_PUBLIC_PAGES_BASE: /${{ github.event.repository.name }}/
+      PAGES_DOMAIN: ''
+      # Zero-API-cost static build: no external model keys or endpoints are inlined.
+      # Ask DeepGrid runs fully in-browser over the 280-node knowledge graph and deterministic council.
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm run build:pages
+      # The multi-route browser gate (scripts/verify-routes.mjs) on the built site, served under the same base path Pages uses.
+      # A red gate stops the deploy.
+      - run: npx playwright install --with-deps chromium
+      - name: Serve the build
+        run: |
+          mkdir -p "$RUNNER_TEMP/srv"
+          ln -s "$PWD/dist/pages" "$RUNNER_TEMP/srv/${{ github.event.repository.name }}"
+          # Threaded: the stock http.server is single-threaded and stalls one chunk request
+          # per page load once the home route imports the scroll engine.
+          python3 scripts/serve-dist.py 8768 "$RUNNER_TEMP/srv" >/dev/null 2>&1 &
+          until curl -sf http://127.0.0.1:8768/${{ github.event.repository.name }}/ >/dev/null; do sleep 1; done
+      - run: node scripts/verify-routes.mjs http://127.0.0.1:8768/${{ github.event.repository.name }}/ verify-shots
+      # Menus by pointer, keyboard and phone sheet; URLs as people type them (/About, /about/).
+      - run: node scripts/verify-nav.mjs http://127.0.0.1:8768/${{ github.event.repository.name }}/
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-shots
+          path: verify-shots
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist/pages
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
+    steps:
+      # Pages runs its own deployment queue, separate from Actions concurrency. Two pushes close
+      # together make the second deploy fail with HTTP 400 "due to in progress deployment" even
+      # though the Actions runs queued correctly -- so a mirror silently stays a commit behind
+      # while every other job is green. Wait the earlier deployment out and try once more.
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - name: Wait out the in-progress deployment
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 120
+      - name: Deploy (retry)
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+  # The same gate against the live site, once Pages serves this commit (build-info.json carries the SHA).
+  verify-live:
+    if: github.event_name != 'pull_request'
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      SITE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Wait for Pages to serve this commit
+        run: |
+          for i in $(seq 60); do
+            curl -sf "${SITE}build-info.json?$i" | grep -q "$GITHUB_SHA" && exit 0
+            sleep 10
+          done
+          echo "Pages did not serve $GITHUB_SHA within 10 minutes"; exit 1
+      - run: node scripts/verify-routes.mjs "$SITE" verify-shots
+      - run: node scripts/verify-nav.mjs "$SITE"
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-live-shots
+          path: verify-shots

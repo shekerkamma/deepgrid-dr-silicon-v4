@@ -1,0 +1,105 @@
+/* Split stage for /technology/die. Two columns held in tension the whole way down, resolved by a
+   collapse onto the one region that is not configurable. Themed from the site's existing tokens. */
+
+.dg-split {
+  --dg-line: #ffffff1c;
+  --dg-accent: #c6a379;
+  --dg-frozen: #7486ab;
+  --dg-mono: var(--font-mono);
+  --dg-ink-soft: #9a9186;
+}
+
+/* The hero: 50/50, both headlines readable at once, so the format is understood before scrolling. */
+.dg-split-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 5vw, 64px);
+  align-items: end;
+  padding: clamp(28px, 4vw, 48px) 0 clamp(24px, 3vw, 36px);
+  border-bottom: 1px solid var(--dg-line);
+}
+.dg-split-head h1 {
+  font: 400 clamp(2rem, 4.4vw, 3.4rem)/1.08 var(--serif, Georgia, serif);
+  letter-spacing: -0.025em; text-wrap: balance; margin: 0;
+}
+.dg-split-head p { color: var(--dg-ink-soft); font-size: 1rem; line-height: 1.75; margin: 0 0 10px; text-wrap: pretty; }
+.dg-split-hint { font: 400 0.68rem/1.5 var(--dg-mono); letter-spacing: 0.1em; text-transform: uppercase; }
+
+.dg-split-body { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 64px); align-items: start; }
+
+/* LEFT: the die sticks while the argument advances beside it. */
+.dg-split-stage { position: sticky; top: calc(var(--nav-h, 56px) + 18px); display: grid; gap: 14px; }
+.dg-die { position: relative; aspect-ratio: 1 / 1; max-height: 62svh; border: 1px solid var(--dg-line); border-radius: 3px; overflow: hidden; }
+.dg-die > :first-child { width: 100%; height: 100%; }
+.dg-die-caption {
+  position: absolute; left: 12px; bottom: 10px; right: 12px;
+  font: 400 0.6rem/1.4 var(--dg-mono); letter-spacing: 0.09em; color: var(--dg-ink-soft);
+}
+
+/* The divider is the chrome: both labels plus the progress of the argument. */
+.dg-divider { display: grid; gap: 10px; }
+.dg-divider-rail { list-style: none; display: grid; grid-auto-flow: column; gap: 4px; margin: 0; padding: 0; }
+.dg-divider-rail li {
+  border-top: 2px solid var(--dg-line); padding-top: 7px;
+  transition: border-color .3s ease, color .3s ease;
+  color: var(--dg-ink-soft);
+}
+.dg-divider-rail li.is-past { border-top-color: color-mix(in srgb, var(--dg-accent) 40%, transparent); }
+.dg-divider-rail li.is-on { border-top-color: var(--dg-accent); color: #efe7db; }
+.dg-divider-code { font: 400 0.62rem/1 var(--dg-mono); letter-spacing: 0.12em; }
+.dg-divider-state {
+  margin: 0; font: 400 0.65rem/1.5 var(--dg-mono); letter-spacing: 0.13em;
+  color: var(--dg-accent); transition: color .3s ease;
+}
+.dg-divider-state.is-frozen { color: var(--dg-frozen); }
+
+/* RIGHT: one region at a time. Inactive steps stay readable; this is a document, not a slideshow. */
+.dg-split-copy { display: grid; }
+.dg-step { padding: clamp(40px, 9vh, 92px) 0; border-bottom: 1px solid var(--dg-line); opacity: .46; transition: opacity .4s ease; }
+.dg-step.is-active { opacity: 1; }
+.dg-step h2 { font: 400 clamp(1.5rem, 2.6vw, 2.1rem)/1.15 var(--serif, Georgia, serif); letter-spacing: -0.02em; margin: 8px 0 10px; text-wrap: balance; }
+.dg-step-code { display: flex; align-items: center; gap: 12px; margin: 0; }
+.dg-step-code .mono { font: 400 0.68rem/1 var(--dg-mono); letter-spacing: 0.14em; color: var(--dg-accent); }
+.dg-tag {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 24px; padding: 0 9px;
+  border: 1px solid var(--dg-line); border-radius: 2px;
+  font: 400 0.6rem/1 var(--dg-mono); letter-spacing: 0.11em; color: var(--dg-ink-soft);
+}
+.dg-tag-frozen { color: var(--dg-frozen); border-color: color-mix(in srgb, var(--dg-frozen) 45%, transparent); }
+.dg-step-short { color: var(--dg-ink-soft); font-size: 0.98rem; line-height: 1.75; margin: 0 0 18px; text-wrap: pretty; }
+.dg-members { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--dg-line); border: 1px solid var(--dg-line); }
+.dg-members li { background: #15110d; padding: 14px 15px; }
+.dg-members h3 { font: 400 0.95rem/1.35 inherit; margin: 0 0 5px; }
+.dg-members p { color: var(--dg-ink-soft); font-size: 0.86rem; line-height: 1.65; margin: 0; }
+.dg-step-why { margin: 16px 0 0; color: var(--dg-ink-soft); font-size: 0.88rem; line-height: 1.7; }
+.dg-step-why .mono { font: 400 0.62rem/1 var(--dg-mono); letter-spacing: 0.12em; color: var(--dg-accent); margin-right: 9px; }
+
+/* THE CLOSE: the split collapses, the frozen region takes the full width, the action lives in it. */
+.dg-collapse {
+  margin-top: clamp(40px, 8vh, 90px); padding: clamp(32px, 6vw, 64px) clamp(24px, 5vw, 56px);
+  border: 1px solid color-mix(in srgb, var(--dg-frozen) 34%, transparent);
+  border-radius: 3px; background: linear-gradient(180deg, #171c24, #13110f);
+}
+.dg-collapse h2 { font: 400 clamp(1.9rem, 4vw, 3rem)/1.1 var(--serif, Georgia, serif); letter-spacing: -0.025em; margin: 12px 0 16px; text-wrap: balance; }
+.dg-collapse-copy { color: var(--dg-ink-soft); font-size: 1rem; line-height: 1.8; max-width: 62ch; margin: 0 0 24px; text-wrap: pretty; }
+.dg-collapse-members { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 12px; max-width: 78ch; }
+.dg-collapse-members li { display: grid; grid-template-columns: 210px 1fr; gap: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--dg-line); }
+.dg-collapse-members strong { font-weight: 400; color: #efe7db; }
+.dg-collapse-members span { color: var(--dg-ink-soft); font-size: 0.88rem; line-height: 1.65; }
+.dg-collapse-actions { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
+.dg-collapse-actions .primary { display: inline-flex; align-items: center; gap: 14px; }
+.dg-collapse-foot { margin: 22px 0 0; color: var(--dg-ink-soft); font-size: 0.78rem; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .dg-split-head, .dg-split-body { grid-template-columns: 1fr; }
+  /* The die leads on a phone, at a height that leaves room to read beside it. */
+  .dg-split-stage { position: sticky; top: calc(var(--nav-h, 52px)); background: #0d0b09; padding: 10px 0; z-index: 2; }
+  .dg-die { max-height: 34svh; }
+  .dg-step { padding: 30px 0; opacity: 1; }
+  .dg-collapse-members li { grid-template-columns: 1fr; gap: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dg-step, .dg-divider-rail li, .dg-divider-state { transition: none; }
+  .dg-step { opacity: 1; }
+}

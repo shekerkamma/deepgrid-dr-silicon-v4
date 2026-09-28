@@ -1,0 +1,156 @@
+/* DG32 refinement: the source diagrams and live hardware models are the visual identity.
+   Keep the incumbent dark editorial system; improve hierarchy and inspection at every route. */
+:root { --review-space: clamp(2rem, 5vw, 4rem); }
+html .page-wrap > .section-head { padding: .75rem 0 1.75rem; margin-bottom: 2rem; border-bottom: 1px solid var(--rule); }
+html .page-wrap > .section-head h1 { max-width: 25ch; font-size: clamp(2.3rem, 3.8vw, 3.5rem); line-height: 1.1; }
+html .page-wrap > .section-head > p { max-width: 68ch; margin-top: 1rem; font-size: 1rem; }
+html .breadcrumbs { padding-block: 1.15rem; }
+html .technology-nav { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 8% 1rem; }
+html .technology-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: .6rem 1rem; border: 1px solid var(--rule); border-radius: var(--sc-radius-sm); color: var(--ink-2); font-size: .875rem; }
+html .technology-nav a[aria-current='page'] { background: var(--accent); color: var(--foreground); border-color: var(--copper); }
+html .technology-nav a:hover { border-color: var(--copper); color: var(--foreground); }
+html .technology-nav a:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+html .dr-sec { padding-top: var(--review-space); }
+html .dr-sec-head { align-items: start; }
+html .dr-sec-copy { max-width: 68ch; }
+html .dr-table, html .st-models { font-variant-numeric: tabular-nums; }
+html .dr-table thead, html .st-models thead { background: var(--popover); }
+html .dr-table th, html .dr-table td, html .st-models th, html .st-models td { padding: 1rem; }
+html .dr-table tbody tr:hover, html .st-models tbody tr:hover { background: var(--popover); }
+html .table-scroll, html .st-table-scroll { scrollbar-color: var(--border) var(--background); }
+html .dr-diagram { border-color: var(--border); }
+html .dr-diagram-actions { flex-wrap: wrap; gap: .75rem; }
+html .dr-diagram-actions a, html .dr-diagram-actions button { min-height: 44px; }
+/* Front door: reserve space for the model and keep the specification values literal. */
+html .dr-hero { min-height: min(43rem, calc(100svh - 9rem)); }
+html .dr-hero .hero-copy { max-width: min(47%, 36rem); padding-block: 3rem 5rem; }
+html .dr-hero .hero-copy > p:not(.eyebrow) { max-width: 54ch; }
+html .dr-hero .hero-annotation { bottom: 3rem; }
+html .dr-hero .hero-bottom { bottom: 1rem; }
+html .dr-exec-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+html .dr-exec-card { min-height: 0; box-shadow: none; background: transparent; border: 0; border-top: 1px solid var(--border); padding: 1.5rem 0; border-radius: 0; }
+html .dr-exec-card:hover { box-shadow: none; transform: none; }
+html .dr-exec-card h3 { font-size: 1.5rem; }
+html .dr-exec-card p, html .dr-exec-impact strong { font: inherit; font-size: .95rem; line-height: 1.65; color: var(--ink-2); }
+html .dr-exec-metric { color: var(--copper); background: transparent; border: 0; padding: 0; font-size: 1.1rem; }
+html .dr-exec-kpi, html .dr-exec-citation span { color: var(--ink-2); }
+html .dr-exec-impact { border: 0; background: transparent; padding: .75rem 0; }
+html .dr-exec-grid [data-rv] { opacity: 1; }
+/* Product architecture: a source figure should be inspectable, uncropped, and labelled. */
+html .dr-parts { gap: 2rem; }
+html .dr-part { padding: clamp(1.25rem, 2.4vw, 2rem); }
+html .dr-part-media { margin: 0 0 1.75rem; border-color: var(--border); }
+html .dr-part-media > a { display: block; background: var(--foreground); }
+html .dr-part-media img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; }
+html .dr-part-media figcaption { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; font-size: .75rem; color: var(--ink-2); }
+html .dr-part-media figcaption a { display: inline-flex; align-items: center; gap: .4rem; min-height: 36px; color: var(--copper); }
+html .dr-part-head h2 { font-size: 2rem; }
+html .dr-part-head p { max-width: 60ch; }
+html .dr-specs > div { padding-block: .8rem; }
+/* Technical routes: diagrams stay dominant and inactive content stays readable. */
+html .dg-step { opacity: 1; }
+html .dg-step:not(.is-active) h2 { color: var(--ink-2); }
+html .dg-split { --dg-ink-soft: var(--ink-2); }
+html .dg-die { border-color: var(--border); }
+html .dg-divider-code, html .dg-divider-state, html .dg-die-caption { font-size: .75rem; }
+html .dr-loop li { padding-block: 1.5rem; }
+html .dr-loop h3 { font-size: 1.4rem; }
+html .dr-loop strong { color: var(--copper); }
+html .view-safety .dr-trace { margin-top: 2rem; }
+html .dr-pinout { gap: 3rem; }
+html .dr-package figcaption { font-size: .8rem; }
+/* Application concepts belong to the system banner, not repeated on every chip. */
+html .pf-scene img { height: auto; aspect-ratio: 4 / 1; object-position: center; }
+html .pf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+html .pf-card { background: var(--popover); }
+html .pf-card-body { padding: 1.75rem; gap: 1rem; }
+html .pf-card h3 { font-size: 1.75rem; }
+html .pf-card p, html .pf-used li { font-size: .95rem; }
+html .pf-card dl { margin-top: 1rem; }
+html .pf-card dd { font-size: .95rem; }
+html .pf-card dl div { flex-direction: column; }
+html .pf-meta { font-family: var(--font-text); letter-spacing: .02em; }
+html .pf-open { align-items: start; }
+html .pf-line-head { gap: .75rem 2rem; }
+html .pf-scene figcaption { position: static; background: var(--popover); padding: .75rem 1rem; color: var(--ink-2); border-top: 1px solid var(--rule); }
+html .st-families a { padding: 1.25rem; background: var(--popover); border: 1px solid var(--rule); }
+html .st-families { gap: 1rem; }
+html .st-beat { padding-block: var(--review-space); }
+html .st-answer .st-beat-text h2 { font-size: var(--sc-t-section); }
+html .st-task h3 { font-size: 1rem; }
+html .st-task { padding-block: 1.5rem; }
+html .st-beat-text h2 { max-width: 32ch; }
+html .st-beat-text > p { line-height: 1.75; }
+/* Evidence and reference media are documents, with their original colours intact. */
+html .dr-film-frame, html .dr-deck-stage { border: 1px solid var(--border); border-radius: var(--sc-radius-lg); overflow: hidden; }
+html .dr-deck-stage img { width: 100%; height: auto; max-height: 68vh; object-fit: contain; }
+html .dr-deck-controls button { min-width: 44px; min-height: 44px; }
+html .dr-lib-tabs button { padding: 1.5rem; }
+html .dr-lib-tabs button strong { font-size: 1.5rem; }
+html .dr-lib-tabs button[aria-selected='true'] { background: var(--popover); }
+html .dr-chapters button { min-height: 64px; }
+html .dr-chapters button.active { border-color: var(--copper); background: var(--popover); }
+html .dr-hub-card { box-shadow: none; }
+/* Procurement and company: emphasise comparisons and the interactive stress model. */
+html .view-procurement .dr-table tbody td:nth-child(2) { color: var(--foreground); background: var(--popover); }
+html .dr-stress { padding: 1.5rem; border: 1px solid var(--border); border-radius: var(--sc-radius-lg); background: var(--popover); }
+html .dr-stress-pull { min-height: 56px; }
+html .dr-stress-toggle[aria-pressed='true'] { background: var(--accent); }
+html .view-company .dr-stats-grid strong { font-family: var(--font-mono); font-size: 1.4rem; }
+/* Q&A and contact: comfortable controls and a consistent reading measure. */
+html .dr-ask-toggle-btn, html .dr-ask-chip { min-height: 44px; font-family: var(--font-text); }
+html .dr-ask-chip { padding: .6rem .85rem; }
+html .dr-ask-chip-text { font-size: .875rem; }
+html .dr-ask-prompts { gap: .6rem; }
+html .dr-ask-input::placeholder { color: var(--ink-2); }
+html .dr-answer-card { box-shadow: none; padding: clamp(1.25rem, 3vw, 2.5rem); }
+html .dr-answer-lead, html .dr-answer-explanation, html .dr-answer-facts { max-width: 72ch; }
+html .dr-answer-explanation p { font-size: 1rem; line-height: 1.75; }
+html .dr-answer-source-ref { color: var(--ink-2); }
+html .dr-enq { max-width: 64rem; padding: clamp(1.25rem, 3vw, 2.5rem); border: 1px solid var(--border); background: var(--popover); border-radius: var(--sc-radius-lg); gap: 1.5rem; }
+html .dr-enq-field label { text-transform: none; letter-spacing: 0; font-size: .9rem; color: var(--foreground); }
+html .dr-enq-field input, html .dr-enq-field select, html .dr-enq-field textarea { background: var(--background); }
+@media (max-width: 1000px) {
+  html .dr-exec-grid { grid-template-columns: 1fr; gap: 1rem; }
+  html .dr-exec-card { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2rem; }
+  html .dr-exec-card-head, html .dr-exec-citation, html .dr-exec-card .dr-links { grid-column: 1 / -1; }
+  html .dr-pinout { grid-template-columns: 1fr; }
+}
+@media (max-width: 800px) {
+  html .dr-hero { display: flex; flex-direction: column; height: auto; max-height: none; min-height: 0; align-items: stretch; }
+  html .dr-hero .hero-canvas { position: relative; inset: auto; width: 100%; height: 270px; opacity: 1; order: 0; }
+  html .dr-hero .hero-copy { order: 1; max-width: none; margin: 0; padding: 1.25rem 6% 1.5rem; animation: none; }
+  html .dr-hero .hero-copy > p:not(.eyebrow) { max-width: 62ch; }
+  html .dr-hero h1 { font-size: clamp(2rem, 6vw, 3rem); margin: .75rem 0 1.25rem; }
+  html .dr-hero .hero-shade { display: none; }
+  html .dr-hero .hero-annotation { position: static; order: 2; margin: 0 6% 1.5rem; animation: none; }
+  html .dr-hero .hero-bottom { display: none; }
+  html .dr-hero .image-disclaimer { top: .5rem; font-size: .7rem; }
+  html .dr-hero .hero-actions { flex-direction: row; flex-wrap: wrap; }
+  html .technology-nav { margin-inline: 5%; }
+  html .technology-nav a { padding-inline: .75rem; }
+  html .page-wrap > .section-head h1 { font-size: 2.2rem; max-width: 28ch; }
+  html .dr-deck-stage img { max-height: none; }
+  html .dr-lib-tabs button { padding: 1rem; }
+  html .dr-ask-chip { width: 100%; justify-content: flex-start; text-align: left; }
+  html .dr-ask-chip-text { white-space: normal; }
+  html .dr-ask-toggle-btn { width: 100%; justify-content: flex-start; }
+  html .dr-ask-view-toggle { width: 100%; }
+  html .pf-scene img { aspect-ratio: 16 / 9; }
+  html .pf-card-body { padding: 1.25rem; }
+  html .dr-stress { padding: 1rem; }
+}
+@media (max-width: 680px) {
+  html .pf-grid, html .dr-exec-card { grid-template-columns: 1fr; }
+  html .dr-part-media figcaption { letter-spacing: 0; }
+  html .dr-table th, html .dr-table td, html .st-models th, html .st-models td { padding: .85rem .65rem; }
+  html .dr-hero .hero-canvas { height: 220px; }
+  html .pf-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html .pf-filters button { justify-content: space-between; text-align: left; padding: .7rem; }
+  html .pf-filters button:first-child { grid-column: 1 / -1; }
+  html .pf-card dl { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html .rv-on [data-rv]:not(.rv-in) { transform: none; }
+  html .rv-on [data-rv]:not(.rv-done) { transition: none; }
+}

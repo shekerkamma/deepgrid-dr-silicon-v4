@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1920, height=640"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgia.ttf") format("truetype");font-weight:400;font-style:normal}
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgiai.ttf") format("truetype");font-weight:400;font-style:italic}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arial.ttf") format("truetype");font-weight:400}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arialbd.ttf") format("truetype");font-weight:700}
+@font-face{font-family:"DG Mono";src:url("assets/fonts/cour.ttf") format("truetype");font-weight:400}
+
+body{margin:0;background:#101212}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#101212;color:#eeeae2;font-family:"DG Sans",sans-serif}
+#grid{position:absolute;inset:0;opacity:.4;background-image:linear-gradient(#3d453b22 1px,transparent 1px),linear-gradient(90deg,#3d453b22 1px,transparent 1px);background-size:40px 40px}
+.mono{font-family:"DG Mono",monospace;letter-spacing:2px;text-transform:uppercase}
+.box{position:absolute;border:2px solid #3d453b;border-radius:10px;background:#191d1b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
+
+.gap{position:absolute;width:320px;padding:12px 18px;box-sizing:border-box;border:2px solid #3d453b;border-radius:8px;background:#191d1b;font-family:"DG Sans",sans-serif;font-weight:700;font-size:26px;color:#eeeae2}
+.spin b{font-family:"DG Serif",serif;font-weight:400;font-size:36px}
+.spin span{font-size:20px;color:#a7b09f}
+#capL{position:absolute;left:80px;top:50px;font-size:24px;color:#a7b09f}
+#capR{position:absolute;left:720px;top:50px;font-size:24px;color:#a7b09f}
+
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="roadmap-gaps" data-start="0" data-width="1920" data-height="640" data-duration="10">
+  <div id="grid" class="clip" data-start="0" data-duration="10" data-track-index="0"></div>
+  <div id="stage" class="clip" data-start="0" data-duration="10" data-track-index="1">
+
+    <div id="capL" class="mono">Where the incumbent leads today</div>
+    <div id="capR" class="mono">The spin that closes it</div>
+    <div class="box spin" id="sp0" style="left:720px;top:110px;width:360px;height:470px;justify-content:flex-start;padding-top:26px;box-sizing:border-box"><b>First silicon</b><span class="mono">Sep 2026 shuttle</span></div><div class="box spin" id="sp1" style="left:1120px;top:110px;width:360px;height:470px;justify-content:flex-start;padding-top:26px;box-sizing:border-box"><b>Second spin</b><span class="mono">two largest gaps</span></div><div class="box spin" id="sp2" style="left:1520px;top:110px;width:360px;height:470px;justify-content:flex-start;padding-top:26px;box-sizing:border-box"><b>Then</b><span class="mono">connectivity and debug</span></div>
+    <div class="gap" style="left:740px;top:250px;border-color:#d4a36e">DG32-LITE</div>
+    <div class="gap" id="g-adc" style="left:80px;top:110px">12-bit ADC</div><div class="gap" id="g-flash" style="left:80px;top:180px">Embedded flash</div><div class="gap" id="g-can" style="left:80px;top:250px">CAN-FD</div><div class="gap" id="g-dbg" style="left:80px;top:320px">Interactive debug</div><div class="gap" id="g-usb" style="left:80px;top:390px">USB</div><div class="gap" id="g-pkg" style="left:80px;top:460px">Package range</div><div class="gap" id="g-mat" style="left:80px;top:530px">Production maturity</div>
+
+  </div>
+</div>
+<script>
+(function(){
+  const tl = gsap.timeline({ paused: true });
+  const E = "power3.out";
+  tl.to("#sp0",{borderColor:"#d4a36e",duration:.4},0.4);
+  tl.to("#g-adc",{x:1060,y:140,borderColor:"#d4a36e",duration:.9,ease:"power2.inOut"},2.0);
+  tl.to("#g-flash",{x:1060,y:150,borderColor:"#d4a36e",duration:.9,ease:"power2.inOut"},2.5);
+  tl.to("#g-can",{x:1460,y:0,borderColor:"#d4a36e",duration:.9,ease:"power2.inOut"},4.6);
+  tl.to("#g-dbg",{x:1460,y:10,borderColor:"#d4a36e",duration:.9,ease:"power2.inOut"},5.1);
+  tl.to("#sp1",{borderColor:"#d4a36e",duration:.4},2.0);
+  tl.to("#sp2",{borderColor:"#d4a36e",duration:.4},4.6);
+  tl.to(".gap",{x:0,y:0,borderColor:"#3d453b",duration:.8,ease:"power2.inOut"},8.6);
+  tl.to(".spin",{borderColor:"#3d453b",duration:.5},8.6);
+  window.__timelines["roadmap-gaps"] = tl;
+})();
+</script>
+</body>
+</html>

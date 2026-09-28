@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1920, height=640"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgia.ttf") format("truetype");font-weight:400;font-style:normal}
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgiai.ttf") format("truetype");font-weight:400;font-style:italic}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arial.ttf") format("truetype");font-weight:400}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arialbd.ttf") format("truetype");font-weight:700}
+@font-face{font-family:"DG Mono";src:url("assets/fonts/cour.ttf") format("truetype");font-weight:400}
+
+body{margin:0;background:#101212}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#101212;color:#eeeae2;font-family:"DG Sans",sans-serif}
+#grid{position:absolute;inset:0;opacity:.4;background-image:linear-gradient(#3d453b22 1px,transparent 1px),linear-gradient(90deg,#3d453b22 1px,transparent 1px);background-size:40px 40px}
+.mono{font-family:"DG Mono",monospace;letter-spacing:2px;text-transform:uppercase}
+.box{position:absolute;border:2px solid #3d453b;border-radius:10px;background:#191d1b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
+
+.chip{flex-direction:row;gap:14px}
+.chip b{font-size:24px;font-weight:700}
+.chip span{font-size:18px;color:#d4a36e}
+.chip.dg{background:#1f231f}
+.sys{flex-direction:row;justify-content:space-between;padding:0 28px;box-sizing:border-box}
+.sys b{font-family:"DG Serif",serif;font-weight:400;font-size:34px}
+.sys span{font-size:20px;color:#a7b09f}
+#lines{position:absolute;inset:0;width:1920px;height:640px}
+#cap{position:absolute;left:40px;top:300px;width:140px;font-size:22px;line-height:1.5;color:#a7b09f}
+
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="portfolio" data-start="0" data-width="1920" data-height="640" data-duration="9">
+  <div id="grid" class="clip" data-start="0" data-duration="9" data-track-index="0"></div>
+  <div id="stage" class="clip" data-start="0" data-duration="9" data-track-index="1">
+
+    <svg id="lines" viewBox="0 0 1920 640"><path class="ln ln-motors" d="M420 58 C 760 58, 840 112, 1180 112" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-motors" d="M420 232 C 760 232, 840 112, 1180 112" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-vehicles" d="M420 522 C 760 522, 840 216, 1180 216" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-vehicles" d="M420 232 C 760 232, 840 216, 1180 216" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-vehicles" d="M420 406 C 760 406, 840 216, 1180 216" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-vehicles" d="M420 290 C 760 290, 840 216, 1180 216" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-defence" d="M420 580 C 760 580, 840 320, 1180 320" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-defence" d="M420 174 C 760 174, 840 320, 1180 320" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-defence" d="M420 464 C 760 464, 840 320, 1180 320" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-defence" d="M420 406 C 760 406, 840 320, 1180 320" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-defence" d="M420 232 C 760 232, 840 320, 1180 320" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-grid" d="M420 116 C 760 116, 840 424, 1180 424" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-boards" d="M420 348 C 760 348, 840 528, 1180 528" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-boards" d="M420 290 C 760 290, 840 528, 1180 528" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/><path class="ln ln-boards" d="M420 464 C 760 464, 840 528, 1180 528" fill="none" stroke="#d4a36e" stroke-width="3" stroke-dasharray="900" stroke-dashoffset="900"/></svg>
+    <div id="cap" class="mono">Ten chips</div>
+    <div class="box chip" id="c-sku1" style="left:200px;top:34px;width:220px;height:48px"><b>SKU-1</b></div><div class="box chip" id="c-sku2" style="left:200px;top:92px;width:220px;height:48px"><b>SKU-2</b></div><div class="box chip" id="c-sku3" style="left:200px;top:150px;width:220px;height:48px"><b>SKU-3</b></div><div class="box chip dg" id="c-sku4" style="left:200px;top:208px;width:220px;height:48px"><b>SKU-4</b><span class=mono>DG32</span></div><div class="box chip" id="c-sku5" style="left:200px;top:266px;width:220px;height:48px"><b>SKU-5</b></div><div class="box chip" id="c-sku6" style="left:200px;top:324px;width:220px;height:48px"><b>SKU-6</b></div><div class="box chip" id="c-sku7" style="left:200px;top:382px;width:220px;height:48px"><b>SKU-7</b></div><div class="box chip" id="c-sku8" style="left:200px;top:440px;width:220px;height:48px"><b>SKU-8</b></div><div class="box chip" id="c-sku9" style="left:200px;top:498px;width:220px;height:48px"><b>SKU-9</b></div><div class="box chip" id="c-d100" style="left:200px;top:556px;width:220px;height:48px"><b>D100</b></div>
+    <div class="box sys" id="s-motors" style="left:1180px;top:70px;width:560px;height:84px"><b>Motors and drives</b><span class="mono">2 chips</span></div><div class="box sys" id="s-vehicles" style="left:1180px;top:174px;width:560px;height:84px"><b>Vehicles</b><span class="mono">4 chips</span></div><div class="box sys" id="s-defence" style="left:1180px;top:278px;width:560px;height:84px"><b>Defence and drones</b><span class="mono">5 chips</span></div><div class="box sys" id="s-grid" style="left:1180px;top:382px;width:560px;height:84px"><b>Grid and metering</b><span class="mono">1 chip</span></div><div class="box sys" id="s-boards" style="left:1180px;top:486px;width:560px;height:84px"><b>Every board</b><span class="mono">3 chips</span></div>
+
+  </div>
+</div>
+<script>
+(function(){
+  const tl = gsap.timeline({ paused: true });
+  const E = "power3.out";
+  tl.to(".ln-motors",{strokeDashoffset:0,duration:.7,ease:"power2.out"},0.4);
+  tl.to(["#c-sku1","#c-sku4"],{borderColor:"#d4a36e",duration:.3},0.4);
+  tl.to("#s-motors",{borderColor:"#d4a36e",duration:.3},0.9);
+  tl.to(".ln-motors",{strokeDashoffset:900,duration:.5},1.6);
+  tl.to(["#c-sku1","#c-sku4"],{borderColor:"#3d453b",duration:.3},1.7000000000000002);
+  tl.to("#s-motors",{borderColor:"#3d453b",duration:.3},1.7000000000000002);
+  tl.to(".ln-vehicles",{strokeDashoffset:0,duration:.7,ease:"power2.out"},2.0);
+  tl.to(["#c-sku9","#c-sku4","#c-sku7","#c-sku5"],{borderColor:"#d4a36e",duration:.3},2.0);
+  tl.to("#s-vehicles",{borderColor:"#d4a36e",duration:.3},2.5);
+  tl.to(".ln-vehicles",{strokeDashoffset:900,duration:.5},3.2);
+  tl.to(["#c-sku9","#c-sku4","#c-sku7","#c-sku5"],{borderColor:"#3d453b",duration:.3},3.3);
+  tl.to("#s-vehicles",{borderColor:"#3d453b",duration:.3},3.3);
+  tl.to(".ln-defence",{strokeDashoffset:0,duration:.7,ease:"power2.out"},3.6);
+  tl.to(["#c-d100","#c-sku3","#c-sku8","#c-sku7","#c-sku4"],{borderColor:"#d4a36e",duration:.3},3.6);
+  tl.to("#s-defence",{borderColor:"#d4a36e",duration:.3},4.1);
+  tl.to(".ln-defence",{strokeDashoffset:900,duration:.5},4.8);
+  tl.to(["#c-d100","#c-sku3","#c-sku8","#c-sku7","#c-sku4"],{borderColor:"#3d453b",duration:.3},4.9);
+  tl.to("#s-defence",{borderColor:"#3d453b",duration:.3},4.9);
+  tl.to(".ln-grid",{strokeDashoffset:0,duration:.7,ease:"power2.out"},5.200000000000001);
+  tl.to(["#c-sku2"],{borderColor:"#d4a36e",duration:.3},5.200000000000001);
+  tl.to("#s-grid",{borderColor:"#d4a36e",duration:.3},5.700000000000001);
+  tl.to(".ln-grid",{strokeDashoffset:900,duration:.5},6.400000000000001);
+  tl.to(["#c-sku2"],{borderColor:"#3d453b",duration:.3},6.500000000000001);
+  tl.to("#s-grid",{borderColor:"#3d453b",duration:.3},6.500000000000001);
+  tl.to(".ln-boards",{strokeDashoffset:0,duration:.7,ease:"power2.out"},6.800000000000001);
+  tl.to(["#c-sku6","#c-sku5","#c-sku8"],{borderColor:"#d4a36e",duration:.3},6.800000000000001);
+  tl.to("#s-boards",{borderColor:"#d4a36e",duration:.3},7.300000000000001);
+  tl.to(".ln-boards",{strokeDashoffset:900,duration:.5},8.0);
+  tl.to(["#c-sku6","#c-sku5","#c-sku8"],{borderColor:"#3d453b",duration:.3},8.100000000000001);
+  tl.to("#s-boards",{borderColor:"#3d453b",duration:.3},8.100000000000001);
+  tl.to({}, {duration:.01}, 8.95);
+  window.__timelines["portfolio"] = tl;
+})();
+</script>
+</body>
+</html>

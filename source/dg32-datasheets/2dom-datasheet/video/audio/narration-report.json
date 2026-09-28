@@ -1,0 +1,320 @@
+{
+  "voice": "bm_george",
+  "speed": 1.05,
+  "slide_speeds": {
+    "1": 0.99,
+    "2": 0.98,
+    "3": 1.0,
+    "4": 0.98,
+    "5": 0.99,
+    "6": 0.99,
+    "7": 0.96,
+    "8": 1.01,
+    "9": 0.99
+  },
+  "sentence_pause_s": 0.55,
+  "wpm_band": [
+    140,
+    155
+  ],
+  "wpm_gate": [
+    135,
+    160
+  ],
+  "overall_wpm": 153.6,
+  "median_f0_hz": 141.2,
+  "holt_f0_hz": 135.6,
+  "total_seconds": 248.4,
+  "failed_slides": [],
+  "slides": [
+    {
+      "slide": 1,
+      "speed": 0.99,
+      "seconds": 26.95,
+      "spoken_words": 69,
+      "wpm": 153.6,
+      "median_f0_hz": 141.2,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "DG32-2DOM is the attention variant of DG32-LITE, and its preliminary datasheet reads like DG32-LITE's with one addition: an INT8 attention engine on its own clock.",
+          "start": 0.0,
+          "end": 14.174
+        },
+        {
+          "text": "This deck covers what the datasheet adds, and confirms what it leaves unchanged.",
+          "start": 14.724,
+          "end": 19.735
+        },
+        {
+          "text": "Every figure is a design value, a process nominal or an analytic estimate, and each is labelled.",
+          "start": 20.285,
+          "end": 26.95
+        }
+      ]
+    },
+    {
+      "slide": 2,
+      "speed": 0.98,
+      "seconds": 29.44,
+      "spoken_words": 76,
+      "wpm": 154.9,
+      "median_f0_hz": 142.9,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "If you have designed with DG32-LITE, most of this is already familiar.",
+          "start": 0.0,
+          "end": 5.523
+        },
+        {
+          "text": "The package, the sixty-four pins and the forty-four signals do not move, and neither do the one point eight and three point three volt supplies.",
+          "start": 6.073,
+          "end": 15.709
+        },
+        {
+          "text": "What is new is a second clock at one hundred fourteen megahertz, driving the engine beside the fifty megahertz CPU.",
+          "start": 16.259,
+          "end": 24.14
+        },
+        {
+          "text": "A board designer sees the same chip; only the firmware sees something extra.",
+          "start": 24.69,
+          "end": 29.439
+        }
+      ]
+    },
+    {
+      "slide": 3,
+      "speed": 1.0,
+      "seconds": 31.17,
+      "spoken_words": 80,
+      "wpm": 154.0,
+      "median_f0_hz": 141.2,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "Only five entries in the feature list are new, and all of them exist because of the engine.",
+          "start": 0.0,
+          "end": 5.731
+        },
+        {
+          "text": "It computes a whole span of rows for an attention head each time it is started, and its results match the reference software exactly.",
+          "start": 6.281,
+          "end": 14.732
+        },
+        {
+          "text": "One shared multiplier and a small weight table keep that hardware compact.",
+          "start": 15.282,
+          "end": 20.319
+        },
+        {
+          "text": "Each row costs about thirty-two hundred cycles by analysis.",
+          "start": 20.869,
+          "end": 25.141
+        },
+        {
+          "text": "And the engine brings its own faster clock, plus a larger die to hold its buffers.",
+          "start": 25.691,
+          "end": 31.166
+        }
+      ]
+    },
+    {
+      "slide": 4,
+      "speed": 0.98,
+      "seconds": 24.02,
+      "spoken_words": 61,
+      "wpm": 152.4,
+      "median_f0_hz": 140.4,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "Everything else is unchanged.",
+          "start": 0.0,
+          "end": 2.239
+        },
+        {
+          "text": "The package, the pin groups, the rails and their limits, and the boot flow are identical to DG32-LITE, because the engine is internal and adds no pads.",
+          "start": 2.789,
+          "end": 13.741
+        },
+        {
+          "text": "The datasheet repeats the same zero point four three watt estimate at fifty megahertz, and it does not yet state a separate figure for the engine.",
+          "start": 14.291,
+          "end": 24.015
+        }
+      ]
+    },
+    {
+      "slide": 5,
+      "speed": 0.99,
+      "seconds": 27.72,
+      "spoken_words": 71,
+      "wpm": 153.7,
+      "median_f0_hz": 139.5,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "Why give the engine a clock of its own?",
+          "start": 0.0,
+          "end": 2.494
+        },
+        {
+          "text": "Speeding up the whole chip would push the lockstep core past its timing limit, so the processor, the bus and all of the peripherals stay at fifty megahertz while the engine runs at one hundred fourteen.",
+          "start": 3.044,
+          "end": 15.863
+        },
+        {
+          "text": "The two sides meet only through synchronised bridges, which means the engine can never hold up control.",
+          "start": 16.413,
+          "end": 23.364
+        },
+        {
+          "text": "After layout, both clocks meet timing with positive slack.",
+          "start": 23.914,
+          "end": 27.715
+        }
+      ]
+    },
+    {
+      "slide": 6,
+      "speed": 0.99,
+      "seconds": 29.11,
+      "spoken_words": 75,
+      "wpm": 154.6,
+      "median_f0_hz": 142.9,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "From firmware, running the engine takes four moves.",
+          "start": 0.0,
+          "end": 3.334
+        },
+        {
+          "text": "Point it at the memory holding its inputs and where its results should go.",
+          "start": 3.884,
+          "end": 8.325
+        },
+        {
+          "text": "Describe the shape of the job: how many rows and keys, and how wide each vector is.",
+          "start": 8.875,
+          "end": 14.56
+        },
+        {
+          "text": "Start it, reusing anything still loaded from last time if that saves work.",
+          "start": 15.11,
+          "end": 19.784
+        },
+        {
+          "text": "Then wait, by polling or with an interrupt.",
+          "start": 20.334,
+          "end": 23.154
+        },
+        {
+          "text": "If the job is shaped wrongly or the arithmetic would overflow, the engine says so.",
+          "start": 23.704,
+          "end": 29.107
+        }
+      ]
+    },
+    {
+      "slide": 7,
+      "speed": 0.96,
+      "seconds": 32.13,
+      "spoken_words": 83,
+      "wpm": 155.0,
+      "median_f0_hz": 139.5,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "The engine's limits are set in silicon, so a model has to fit them rather than the other way round.",
+          "start": 0.0,
+          "end": 6.498
+        },
+        {
+          "text": "One start covers up to sixty-five thousand five hundred thirty-five query rows, and each head can hold up to four hundred keys.",
+          "start": 7.048,
+          "end": 15.671
+        },
+        {
+          "text": "Keys can be thirty-two bytes wide and values sixty-four.",
+          "start": 16.221,
+          "end": 20.259
+        },
+        {
+          "text": "Sixteen multiply lanes, a two-hundred-fifty-six entry weight table and a forty-bit numerator keep the result exact up to one hundred thirty-one thousand keys.",
+          "start": 20.809,
+          "end": 32.127
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "speed": 1.01,
+      "seconds": 19.01,
+      "spoken_words": 48,
+      "wpm": 151.5,
+      "median_f0_hz": 143.7,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "For the board, nothing changes.",
+          "start": 0.0,
+          "end": 2.158
+        },
+        {
+          "text": "The footprint, the pin map, the supplies and their sequencing, and the boot flash and console are the same as DG32-LITE.",
+          "start": 2.708,
+          "end": 10.964
+        },
+        {
+          "text": "The engine adds no board signals at all.",
+          "start": 11.514,
+          "end": 14.427
+        },
+        {
+          "text": "The chip's status is design complete, and in physical trials.",
+          "start": 14.977,
+          "end": 19.013
+        }
+      ]
+    },
+    {
+      "slide": 9,
+      "speed": 0.99,
+      "seconds": 28.86,
+      "spoken_words": 73,
+      "wpm": 151.8,
+      "median_f0_hz": 142.9,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "Here is what matters for a design team.",
+          "start": 0.0,
+          "end": 2.724
+        },
+        {
+          "text": "Any board laid out for DG32-LITE already fits DG32-2DOM.",
+          "start": 3.274,
+          "end": 8.806
+        },
+        {
+          "text": "The new engine runs from a separate, faster clock and can never hold up motor control.",
+          "start": 9.356,
+          "end": 15.053
+        },
+        {
+          "text": "And its limits are settled today, at four hundred keys, values of sixty-four bytes and roughly thirty-two hundred cycles per row, by analysis.",
+          "start": 15.603,
+          "end": 25.445
+        },
+        {
+          "text": "Real measurements arrive with first silicon.",
+          "start": 25.995,
+          "end": 28.86
+        }
+      ]
+    }
+  ]
+}

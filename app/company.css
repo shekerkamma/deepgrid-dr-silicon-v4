@@ -1,0 +1,163 @@
+/* /company signature: break the plan yourself. Bars scale with transform only, so nothing lays out
+   while they move; teal marks the row a shock cannot reach, which is the one safe state on the site's
+   palette (see dr.css --cpu). Tokens are the ones globals.css and dr.css already define. */
+.dr-stress { margin-top: 28px; display: grid; gap: 22px; }
+
+/* A rendered <legend> straddles its fieldset's top border, so with no border it half-escapes the box
+   and clips. Floated full-width it lays out as an ordinary block inside the fieldset instead. */
+.dr-stress-controls { margin: 0; padding: 0; border: 0; min-width: 0; }
+.dr-stress-buttons { clear: both; display: flex; flex-wrap: wrap; gap: 12px; }
+.dr-stress-legend {
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: var(--text-meta);
+  letter-spacing: var(--sc-track-meta);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.dr-stress-toggle,
+.dr-stress-reset {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--sc-radius-md);
+  background: var(--popover);
+  color: var(--foreground);
+  font: inherit;
+  font-size: var(--text-control);
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.dr-stress-toggle[aria-pressed="true"] { border-color: var(--copper); color: var(--copper); }
+.dr-stress-reset:disabled { opacity: .45; cursor: default; }
+.dr-stress-toggle:focus-visible,
+.dr-stress-reset:focus-visible,
+.dr-stress-pull:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+.dr-stress-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.dr-stress-pull {
+  display: grid;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 6.5rem;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--sc-radius-md);
+  background: transparent;
+  color: var(--foreground);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.dr-stress-pull:hover { border-color: var(--rule); }
+.dr-stress-name { min-width: 0; font-size: var(--sc-t-body); }
+.dr-stress-bar { position: relative; height: 10px; border-radius: 2px; background: var(--rule); overflow: hidden; }
+.dr-stress-bar i {
+  position: absolute; inset: 0;
+  background: var(--copper);
+  transform-origin: left center;
+  transition: transform .5s cubic-bezier(.2, .7, .2, 1), opacity .3s ease;
+}
+.dr-stress-val {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: var(--sc-t-body);
+}
+.dr-stress-why {
+  margin: 0 12px;
+  min-height: 1.4em;
+  color: var(--ink-2);
+  font-size: var(--text-meta);
+  padding-left: calc(11rem + 16px);
+}
+
+.dr-stress-row[data-state="cut"] .dr-stress-bar i { opacity: .55; }
+.dr-stress-row[data-state="held"] .dr-stress-bar i { background: var(--cpu); }
+.dr-stress-row[data-state="held"] .dr-stress-val { color: var(--cpu); }
+.dr-stress-row[data-state="pulled"] .dr-stress-name,
+.dr-stress-row[data-state="pulled"] .dr-stress-val { color: var(--ink-2); text-decoration: line-through; }
+
+.dr-stress-total {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  column-gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.dr-stress-total strong {
+  font-family: var(--serif);
+  font-size: var(--heading-section);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: var(--copper);
+}
+.dr-stress-total p {
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
+  color: var(--foreground);
+  font-size: var(--sc-t-body);
+  line-height: var(--sc-lh-body);
+  max-width: var(--sc-measure);
+  text-wrap: pretty;
+}
+
+.dr-stress-quote {
+  margin: 0;
+  padding-left: 18px;
+  border-left: 2px solid var(--copper);
+}
+.dr-stress-quote p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: var(--sc-t-lead);
+  line-height: var(--sc-lh-card);
+  max-width: var(--sc-measure);
+  text-wrap: pretty;
+}
+.dr-stress-quote cite {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-size: var(--text-meta);
+  letter-spacing: var(--sc-track-meta);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+@media (max-width: 720px) {
+  .dr-stress-pull { grid-template-columns: minmax(0, 1fr) 5.5rem; row-gap: 8px; }
+  .dr-stress-bar { grid-column: 1 / -1; grid-row: 2; }
+  .dr-stress-why { padding-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dr-stress-bar i,
+  .dr-stress-pull,
+  .dr-stress-toggle,
+  .dr-stress-reset { transition: none; }
+}
+/* the chip a revenue row names, linking to its card on /applications */
+.dr-stress-chip {
+  margin: 2px 12px 0;
+  padding-left: calc(11rem + 16px);
+  font-size: var(--text-meta);
+  color: var(--ink-2);
+}
+.dr-stress-chip .st-link { min-height: 24px; display: inline-flex; align-items: center; }
+.dr-stress-key {
+  margin: 10px 0 0;
+  max-width: 64ch;
+  font-size: var(--text-control);
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+@media (max-width: 760px) {
+  .dr-stress-chip { padding-left: 0; }
+}

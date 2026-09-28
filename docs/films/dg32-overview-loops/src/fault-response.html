@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=800, height=450"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgia.ttf") format("truetype");font-weight:400;font-style:normal}
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgiai.ttf") format("truetype");font-weight:400;font-style:italic}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arial.ttf") format("truetype");font-weight:400}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arialbd.ttf") format("truetype");font-weight:700}
+@font-face{font-family:"DG Mono";src:url("assets/fonts/cour.ttf") format("truetype");font-weight:400}
+
+body{margin:0;background:#101212}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#101212;color:#eeeae2;font-family:"DG Sans",sans-serif}
+#grid{position:absolute;inset:0;opacity:.4;background-image:linear-gradient(#3d453b22 1px,transparent 1px),linear-gradient(90deg,#3d453b22 1px,transparent 1px);background-size:40px 40px}
+.mono{font-family:"DG Mono",monospace;letter-spacing:2px;text-transform:uppercase}
+.box{position:absolute;border:2px solid #3d453b;border-radius:10px;background:#191d1b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
+
+#m{left:40px;top:70px;width:150px;height:80px} #k{left:40px;top:240px;width:150px;height:80px}
+.box b{font-size:24px;font-weight:700;letter-spacing:1px}
+#vm{position:absolute;left:204px;top:90px;font-family:"DG Mono",monospace;font-size:26px;color:#eeeae2}
+#vk{position:absolute;left:204px;top:260px;font-family:"DG Mono",monospace;font-size:26px;color:#eeeae2}
+#cmp{left:350px;top:150px;width:150px;height:90px} #fn{left:560px;top:150px;width:180px;height:90px}
+#br{left:560px;top:300px;width:180px;height:90px}
+#ne{position:absolute;left:406px;top:96px;font-family:"DG Serif",serif;font-size:44px;color:#d4a36e}
+#w{position:absolute;inset:0;width:800px;height:450px}
+#ctr{position:absolute;left:40px;top:360px;font-size:32px;color:#a7b09f}
+#ne,#off,#ctr{opacity:0}
+#off{position:absolute;left:560px;top:396px;width:180px;text-align:center;font-size:30px;color:#2f9e8c}
+
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="fault-response" data-start="0" data-width="800" data-height="450" data-duration="8">
+  <div id="grid" class="clip" data-start="0" data-duration="8" data-track-index="0"></div>
+  <div id="stage" class="clip" data-start="0" data-duration="8" data-track-index="1">
+
+    <svg id="w" viewBox="0 0 800 450">
+      <path d="M190 110 H300 V195 H350 M190 280 H300 V195" fill="none" stroke="#3d453b" stroke-width="3"/>
+      <path d="M500 195 H560 M650 240 V300" fill="none" stroke="#3d453b" stroke-width="3"/>
+      <path id="hot" d="M500 195 H560 M650 240 V300" fill="none" stroke="#d4a36e" stroke-width="5" stroke-dasharray="120" stroke-dashoffset="120"/>
+    </svg>
+    <div class="box" id="m"><b>MAIN</b></div>
+    <div class="box" id="k"><b>CHECKER</b></div>
+    <div id="vm">3A7F</div><div id="vk">3A7F</div>
+    <div class="box" id="cmp"><b style="font-size:20px">COMPARE</b></div>
+    <div id="ne">≠</div>
+    <div class="box" id="fn"><b style="font-size:22px">FAULT_N</b></div>
+    <div class="box" id="br"><b style="font-size:22px">BRIDGE</b></div>
+    <div id="off" class="mono">off</div>
+    <div id="ctr" class="mono"><span style="display:block">39 cycles</span><span style="display:block">simulated</span></div>
+
+  </div>
+</div>
+<script>
+(function(){
+  const tl = gsap.timeline({ paused: true });
+  const E = "power3.out";
+
+  tl.to("#vm",{color:"#bf7f3b",duration:.2},1.2);
+  tl.to("#m",{borderColor:"#bf7f3b",duration:.3},1.2);
+  tl.set("#vm",{textContent:"3A7E"},1.2);
+  tl.to("#cmp",{borderColor:"#d4a36e",duration:.3},2.0);
+  tl.to("#ne",{opacity:1,duration:.3},2.0);
+  tl.to("#hot",{strokeDashoffset:60,duration:.4},2.6);
+  tl.to("#fn",{borderColor:"#d4a36e",duration:.3},2.9);
+  tl.to("#hot",{strokeDashoffset:0,duration:.4},3.4);
+  tl.to("#br",{borderColor:"#2f9e8c",duration:.3},3.8);
+  tl.to("#off",{opacity:1,duration:.3},3.9);
+  tl.to("#ctr",{opacity:1,duration:.4},4.3);
+  // reset to the opening frame
+  tl.to(["#ne","#off","#ctr"],{opacity:0,duration:.4},7.0);
+  tl.to(["#m","#cmp","#fn","#br"],{borderColor:"#3d453b",duration:.4},7.0);
+  tl.to("#hot",{strokeDashoffset:120,duration:.4},7.0);
+  tl.to("#vm",{color:"#eeeae2",duration:.3},7.2);
+  tl.set("#vm",{textContent:"3A7F"},7.2);
+
+  window.__timelines["fault-response"] = tl;
+})();
+</script>
+</body>
+</html>

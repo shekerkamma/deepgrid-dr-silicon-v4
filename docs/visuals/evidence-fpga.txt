@@ -1,0 +1,9 @@
+Render this design specification exactly as a photograph.
+
+DESIGN SPEC
+Canvas: landscape 3:2, near-black background.
+Style: Photorealistic product photograph, low-key studio lighting on a near-black background (#101212, cool and very slightly green), a single warm copper rim light (#d4a36e), shallow depth of field, crisp macro detail, restrained and engineering-grade, no people.
+
+SCENE: an engineering validation bench. In sharp focus, a generic FPGA development board with one large square BGA FPGA package at its centre, headers and a few status LEDs (warm amber only). Ribbon cable and jumper wires run from its header to a small motor-drive circuit board beside it. Behind, deeply out of focus, the dark glass of an oscilloscope screen showing only two faint square-wave traces in warm amber, with no readable characters. Matte dark bench mat. Quiet, methodical, pre-production mood.
+
+RULES: absolutely no text, no letters, no numbers, no logos, no brand names, no chip markings, no watermark, no labels anywhere in the image; no glowing neon, no sci-fi hologram effects; no teal or blue light.

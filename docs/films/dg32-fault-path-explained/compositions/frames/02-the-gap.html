@@ -1,0 +1,72 @@
+<template>
+<style>
+
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgia.ttf") format("truetype");font-weight:400;font-style:normal}
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgiai.ttf") format("truetype");font-weight:400;font-style:italic}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arial.ttf") format("truetype");font-weight:400}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arialbd.ttf") format("truetype");font-weight:700}
+@font-face{font-family:"DG Mono";src:url("assets/fonts/cour.ttf") format("truetype");font-weight:400}
+
+
+#root{position:absolute;inset:0;color:#eeeae2;font-family:"DG Sans",sans-serif;overflow:hidden}
+#f02-bg{position:absolute;inset:0;background:#101212}
+#f02-grid{position:absolute;inset:0;opacity:.35;background-image:linear-gradient(#3d453b22 1px,transparent 1px),linear-gradient(90deg,#3d453b22 1px,transparent 1px);background-size:80px 80px}
+.f02-kicker{position:absolute;left:120px;top:92px;font-family:"DG Mono",monospace;font-size:24px;letter-spacing:4px;color:#d4a36e;text-transform:uppercase}
+.f02-title{position:absolute;left:120px;top:132px;font-family:"DG Serif",serif;font-size:76px;line-height:1.05;letter-spacing:-1.5px;color:#eeeae2;margin:0}
+.f02-title em{font-style:italic;color:#c5c2b3}
+.f02-lbl{font-family:"DG Mono",monospace;font-size:24px;letter-spacing:3px;color:#a7b09f;text-transform:uppercase}
+.f02-box{position:absolute;border:2px solid #3d453b;border-radius:10px;background:#191d1b;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px}
+.f02-box b{font-family:"DG Sans",sans-serif;font-weight:700;font-size:30px;letter-spacing:1px;color:#eeeae2}
+.f02-box span{font-family:"DG Mono",monospace;font-size:22px;letter-spacing:2px;color:#a7b09f;text-transform:uppercase}
+.f02-val{font-family:"DG Mono",monospace;font-size:34px;letter-spacing:2px;color:#eeeae2}
+
+
+#f02-line{position:absolute;left:180px;top:560px;width:1560px;height:2px;background:#3d453b}
+#f02-track{position:absolute;left:180px;top:420px;width:1560px;height:300px}
+.f02-tick{position:absolute;top:60px;width:40px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.f02-tick i{display:block;width:40px;height:160px;border-radius:6px;background:#d4a36e}
+.f02-tick span{font-family:"DG Mono",monospace;font-size:22px;letter-spacing:2px;color:#d4a36e;white-space:nowrap}
+.f02-gap{position:absolute;top:60px;width:380px;height:160px;border:2px dashed #3d453b;border-radius:6px;background:repeating-linear-gradient(135deg,#a7b09f14 0 10px,transparent 10px 22px)}
+#f02-blind{position:absolute;left:430px;top:340px;font-family:"DG Mono",monospace;font-size:22px;letter-spacing:4px;color:#a7b09f}
+#f02-spark{position:absolute;left:1220px;top:470px;width:60px;height:60px;border-radius:50%;background:radial-gradient(closest-side,#bf7f3b,#bf7f3b00)}
+#f02-sl{position:absolute;left:1205px;top:760px;font-family:"DG Mono",monospace;font-size:20px;letter-spacing:3px;color:#bf7f3b}
+#f02-time{position:absolute;left:180px;top:760px}
+
+</style>
+<div id="root" data-composition-id="02-the-gap" data-width="1920" data-height="1080">
+  <div id="f02-bg" class="clip" data-start="0" data-duration="10.091" data-track-index="0"></div>
+  <div id="f02-grid" class="clip" data-start="0" data-duration="10.091" data-track-index="1"></div>
+  <div id="f02-stage" class="clip" data-start="0" data-duration="10.091" data-track-index="2">
+
+    <div class="f02-kicker" id="f02-k">The usual defence</div>
+    <h1 class="f02-title" id="f02-t">Blind <em>between runs</em></h1>
+    <div id="f02-line"></div>
+    <div id="f02-track"><div class="f02-gap" style="left:40px"></div><div class="f02-gap" style="left:460px"></div><div class="f02-gap" style="left:880px"></div><div class="f02-tick" style="left:0px"><i></i><span>SELF-TEST</span></div><div class="f02-tick" style="left:420px"><i></i><span>SELF-TEST</span></div><div class="f02-tick" style="left:840px"><i></i><span>SELF-TEST</span></div><div class="f02-tick" style="left:1260px"><i></i><span>SELF-TEST</span></div></div>
+    <div id="f02-blind">UNCHECKED</div>
+    <div id="f02-spark"></div>
+    <div id="f02-sl">FAULT</div>
+    <div class="f02-lbl" id="f02-time">time →</div>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+(function(){
+  const tl = gsap.timeline({ paused: true });
+  const E = "power3.out";
+
+  tl.fromTo("#f02-k",{opacity:0,y:12},{opacity:1,y:0,duration:.5,ease:E},0.1);
+  tl.fromTo("#f02-line",{scaleX:0},{scaleX:1,transformOrigin:"0 50%",duration:1.2,ease:"power2.inOut"},0.4);
+  tl.fromTo("#f02-time",{opacity:0},{opacity:1,duration:.4},1.2);
+  tl.fromTo(".f02-tick",{opacity:0,y:30},{opacity:1,y:0,duration:.45,stagger:.35,ease:E},1.4);
+  tl.fromTo("#f02-t",{opacity:0,y:24},{opacity:1,y:0,duration:.7,ease:E},3.6);
+  tl.fromTo(".f02-gap",{opacity:0},{opacity:1,duration:.5,stagger:.25},5.4);
+  tl.fromTo("#f02-blind",{opacity:0},{opacity:1,duration:.5},6.4);
+  tl.fromTo("#f02-spark",{opacity:0,scale:.2},{opacity:1,scale:1.4,duration:.4,ease:"power2.out"},7.8);
+  tl.to("#f02-spark",{scale:1,duration:.3},8.2);
+  tl.fromTo("#f02-sl",{opacity:0},{opacity:1,duration:.4},8.4);
+
+  window.__timelines["02-the-gap"] = tl;
+})();
+</script>
+</template>

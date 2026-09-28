@@ -1,0 +1,123 @@
+{
+  "duration": 463.13,
+  "chapters": [
+    {
+      "title": "Why lockstep",
+      "slides": [
+        1,
+        3
+      ],
+      "start": 0.0,
+      "end": 91.88
+    },
+    {
+      "title": "Inside the architecture",
+      "slides": [
+        4,
+        8
+      ],
+      "start": 91.88,
+      "end": 239.68
+    },
+    {
+      "title": "The control-loop budget",
+      "slides": [
+        9,
+        11
+      ],
+      "start": 239.68,
+      "end": 314.92
+    },
+    {
+      "title": "Package, variant and roadmap",
+      "slides": [
+        12,
+        16
+      ],
+      "start": 314.92,
+      "end": 463.13
+    }
+  ],
+  "segments": [
+    {
+      "slide": 1,
+      "start": 0.0,
+      "duration": 31.35
+    },
+    {
+      "slide": 2,
+      "start": 31.35,
+      "duration": 30.01
+    },
+    {
+      "slide": 3,
+      "start": 61.36,
+      "duration": 30.52
+    },
+    {
+      "slide": 4,
+      "start": 91.88,
+      "duration": 30.09
+    },
+    {
+      "slide": 5,
+      "start": 121.97,
+      "duration": 31.46
+    },
+    {
+      "slide": 6,
+      "start": 153.43,
+      "duration": 25.4
+    },
+    {
+      "slide": 7,
+      "start": 178.83,
+      "duration": 31.12
+    },
+    {
+      "slide": 8,
+      "start": 209.95,
+      "duration": 29.73
+    },
+    {
+      "slide": 9,
+      "start": 239.68,
+      "duration": 25.63
+    },
+    {
+      "slide": 10,
+      "start": 265.31,
+      "duration": 25.51
+    },
+    {
+      "slide": 11,
+      "start": 290.82,
+      "duration": 24.1
+    },
+    {
+      "slide": 12,
+      "start": 314.92,
+      "duration": 28.45
+    },
+    {
+      "slide": 13,
+      "start": 343.37,
+      "duration": 29.8
+    },
+    {
+      "slide": 14,
+      "start": 373.17,
+      "duration": 28.24
+    },
+    {
+      "slide": 15,
+      "start": 401.41,
+      "duration": 32.13
+    },
+    {
+      "slide": 16,
+      "start": 433.54,
+      "duration": 29.59
+    }
+  ]
+}

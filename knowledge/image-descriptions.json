@@ -1,0 +1,154 @@
+{
+ "public/media/deepgrid_soc2_die.jpg": {
+  "sha": "e389c10ad3ce4a60",
+  "model": "gemini-3.8-flash-high",
+  "kind": "render",
+  "shows": "This render shows an integrated circuit chip mounted on a printed circuit board, featuring an exposed die with glowing cyan and orange internal circuit pathways. In the blurred background, laboratory tools and electronic testing equipment rest on a workbench.",
+  "visibleText": [
+   "DEEPGRID SEMI SoC2",
+   "28nm 39.3 TOPS"
+  ],
+  "subjects": [
+   "semiconductor",
+   "microchip",
+   "circuit board",
+   "processor",
+   "hardware"
+  ]
+ },
+ "public/media/sims_image2.png": {
+  "sha": "c740dae2212a9c47",
+  "model": "gemini-3.8-flash-high",
+  "kind": "screenshot",
+  "shows": "This screenshot shows an autonomous driving simulator displaying a 3D environment with a vehicle driving along a paved road beside a green embankment. Digital overlay panels around the screen display driving telemetry, perception tracking data, and a bird's-eye view planner interface.",
+  "visibleText": [
+   "DEEPGRID · D-DRIVE",
+   "ADAS SIM V2 · BEV + LIDAR + VEHICLE DYNAMICS",
+   "CRUISE",
+   "MARKET STREET",
+   "NH SINGLE CARRIAGEWAY",
+   "STRESS TEST",
+   "CAM: CHASE",
+   "26 km/h",
+   "BEV · PLANNER VIEW",
+   "PERCEPTION · CAMERA + RADAR + LIDAR",
+   "motorbike",
+   "auto-rickshaw"
+  ],
+  "subjects": [
+   "ADAS simulation",
+   "autonomous driving",
+   "vehicle telemetry",
+   "perception system",
+   "BEV planner"
+  ]
+ },
+ "public/media/lines_image5.png": {
+  "sha": "be7b23febaf9634b",
+  "model": "gemini-3.8-flash-high",
+  "kind": "screenshot",
+  "shows": "This screenshot shows a 3D digital twin interface for container port operations, displaying a docked cargo ship, cranes, and prime mover vehicles moving among container stacks. Telemetry panels and key performance indicators overlay the simulation, detailing positioning accuracy, fleet status, and crane cycles.",
+  "visibleText": [
+   "DEEPGRID DGrid Yard OS",
+   "LIVE TERMINAL TWIN - PS18",
+   "QUAY DISCHARGE",
+   "D-DRIVE FLEET",
+   "POSITIONING - SELECTED AGV",
+   "11 cm RMS",
+   "TRIAL KPIS · LIVE",
+   "Pos. accuracy (open) 7 cm",
+   "Pos. accuracy (under crane) 22 cm",
+   "QUAY CRANES",
+   "Predictive ETA",
+   "CONFIDENTIAL © Deepgrid 2026"
+  ],
+  "subjects": [
+   "digital twin",
+   "port automation",
+   "container terminal",
+   "fleet tracking",
+   "autonomous vehicles"
+  ]
+ },
+ "public/media/lines_image.png": {
+  "sha": "51c5ebd8e5b52922",
+  "model": "gemini-3.8-flash-high",
+  "kind": "screenshot",
+  "shows": "A software simulation interface displays a chase camera view of a yellow autonomous forklift navigating an aisle between storage racks in a warehouse. Graphical HUD overlays show teleoperation controls, obstacle detection warnings, speed metrics, and a top-down sensor fusion map.",
+  "visibleText": [
+   "DEEPGRID AMR FORKLIFT",
+   "OBSTACLE AHEAD — CREEPING",
+   "PEAK-HOUR FLOOR",
+   "0.6 m/s",
+   "BEV · SENSOR FUSION (CAM + LIDAR)",
+   "PERCEPTION · L1 LIDAR + CAMERA FUSION",
+   "worker (hi-vis) · 2.6m",
+   "CONFIDENTIAL © Deepgrid 2026",
+   "INBOUND PUT-AWAY",
+   "PICK RUN",
+   "DRAW MAP",
+   "CAM: CHASE"
+  ],
+  "subjects": [
+   "autonomous forklift",
+   "warehouse automation",
+   "robotics simulator",
+   "sensor fusion",
+   "obstacle detection"
+  ]
+ },
+ "public/diagrams/dg32-lite-architecture.svg": {
+  "sha": "7fda913b46a3c4ef",
+  "model": "gemini-3.8-flash-high",
+  "kind": "diagram",
+  "shows": "The image is a block diagram illustrating the DG32-LITE system architecture and its functional modules. It details sub-systems including the safety core, memory and boot, supervision, motor drive, sensing and math, and connectivity, interconnected via an on-chip bus to external hardware.",
+  "visibleText": [
+   "DG32-LITE system architecture",
+   "DG32-LITE · one 50 MHz clock domain · 130 nm CMOS · QFN-64",
+   "Safety core",
+   "Memory & boot",
+   "Supervision",
+   "On-chip bus · two masters (CPU, DMA) · deterministic latency · unmapped address → bus error, never a hang",
+   "Motor drive",
+   "Sensing & math",
+   "Connectivity & test",
+   "QSPI NOR flash application image (external)",
+   "Gate driver + 3-phase bridge (external)",
+   "Motor sensors"
+  ],
+  "subjects": [
+   "system architecture",
+   "block diagram",
+   "microcontroller",
+   "semiconductor design",
+   "motor drive"
+  ]
+ },
+ "public/diagrams/dg32-2dom-architecture.svg": {
+  "sha": "c639bcbcccbe4a72",
+  "model": "gemini-3.8-flash-high",
+  "kind": "diagram",
+  "shows": "This block diagram illustrates the system architecture of the DG32-2DOM chip, showing functional modules divided across two clock domains. A 50 MHz control domain communicates with a 114 MHz INT8 attention engine compute domain through clock-domain bridges.",
+  "visibleText": [
+   "DG32-2DOM system architecture",
+   "50 MHz control domain · identical to DG32-LITE",
+   "Clock-domain bridges",
+   "114 MHz compute domain · INT8 attention engine",
+   "Lockstep CPU pair",
+   "Fault latch + supervision",
+   "On-chip bus · bus error, never a hang",
+   "Lite bridge",
+   "Burst read",
+   "Burst write",
+   "1 · Program shapes",
+   "pre-silicon design, September 2026"
+  ],
+  "subjects": [
+   "system architecture",
+   "microelectronics",
+   "block diagram",
+   "attention engine",
+   "hardware design"
+  ]
+ }
+}

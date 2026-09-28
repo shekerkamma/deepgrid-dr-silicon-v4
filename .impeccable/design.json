@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-24T00:04:35.444797+00:00",
+  "title": "Design System: DG32 Silicon Site",
+  "extensions": {
+    "homepageRefinement": {
+      "date": "2026-09-28",
+      "artifacts": ["app/home-refined.tsx", "app/home-refined.css", "app/page.tsx"],
+      "audience": "Engineering",
+      "readingOrder": ["Product", "Mechanism", "Graded evidence", "Evaluation"],
+      "preservedIdentity": "Ink/copper, Newsreader/Inter/JetBrains Mono, original wordmark and interactive model",
+      "responsiveLayout": "Copy first on phones; model on the right on desktop",
+      "evidence": "Pre-silicon: 39-cycle fault response and approximately 100 kHz closed current-loop rate are simulated; 82% diagnostic headroom at 10 kHz is analytic",
+      "interaction": "Enquiry actions lead to Contact; existing fault trace remains skippable",
+      "review": "PASS across all five contract sections"
+    },
+    "colorMeta": {
+      "copper": {
+        "role": "primary",
+        "displayName": "Copper",
+        "canonical": "#d4a36e",
+        "tonalRamp": [
+          "#261d14",
+          "#403121",
+          "#614b32",
+          "#7f6242",
+          "#9e7a52",
+          "#bd9162",
+          "#dba972",
+          "#f2ba7e"
+        ]
+      },
+      "copper-ring": {
+        "role": "primary",
+        "displayName": "Copper Ring",
+        "canonical": "#d9ac78",
+        "tonalRamp": [
+          "#261e15",
+          "#403323",
+          "#614d36",
+          "#7f6547",
+          "#9e7d57",
+          "#bd9668",
+          "#dbae79",
+          "#f2c086"
+        ]
+      },
+      "hardware": {
+        "role": "primary",
+        "displayName": "Hardware Copper",
+        "canonical": "#bf7f3b",
+        "tonalRamp": [
+          "#26190c",
+          "#402a14",
+          "#61401e",
+          "#7f5527",
+          "#9e6931",
+          "#bd7d3a",
+          "#db9244",
+          "#f2a14b"
+        ]
+      },
+      "cpu": {
+        "role": "secondary",
+        "displayName": "Signal Teal",
+        "canonical": "#2f9e8c",
+        "tonalRamp": [
+          "#0b2622",
+          "#134038",
+          "#1d6156",
+          "#268071",
+          "#2f9e8c",
+          "#38bda7",
+          "#41dbc2",
+          "#48f2d7"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#101212",
+        "tonalRamp": [
+          "#222626",
+          "#394040",
+          "#566161",
+          "#718080",
+          "#8d9e9e",
+          "#a8bdbd",
+          "#c3dbdb",
+          "#d7f2f2"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#191d1b",
+        "tonalRamp": [
+          "#212624",
+          "#37403b",
+          "#54615a",
+          "#6e7f77",
+          "#889e93",
+          "#a3bdb0",
+          "#bddbcc",
+          "#d1f2e2"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#292d29",
+        "tonalRamp": [
+          "#232623",
+          "#3a403a",
+          "#586158",
+          "#748074",
+          "#909e90",
+          "#acbdac",
+          "#c8dbc8",
+          "#ddf2dd"
+        ]
+      },
+      "accent-surface": {
+        "role": "neutral",
+        "displayName": "Accent Surface",
+        "canonical": "#343d31",
+        "tonalRamp": [
+          "#21261f",
+          "#364033",
+          "#53614e",
+          "#6d8066",
+          "#879e7f",
+          "#a1bd98",
+          "#bbdbb0",
+          "#cff2c3"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Border",
+        "canonical": "#3d453b",
+        "tonalRamp": [
+          "#222621",
+          "#384037",
+          "#566153",
+          "#71806d",
+          "#8c9e87",
+          "#a7bda1",
+          "#c2dbbc",
+          "#d6f2cf"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#48544066",
+        "tonalRamp": [
+          "#21261d",
+          "#374031",
+          "#53614a",
+          "#6d8061",
+          "#889e78",
+          "#a2bd90",
+          "#bcdba7",
+          "#d0f2b9"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#eeeae2",
+        "tonalRamp": [
+          "#262624",
+          "#403f3d",
+          "#615f5c",
+          "#807d79",
+          "#9e9b96",
+          "#bdbab3",
+          "#dbd8d0",
+          "#f2eee6"
+        ]
+      },
+      "paper-bright": {
+        "role": "neutral",
+        "displayName": "Paper Bright",
+        "canonical": "#f4f0e7",
+        "tonalRamp": [
+          "#262624",
+          "#403f3c",
+          "#615f5c",
+          "#807d79",
+          "#9e9c96",
+          "#bdbab3",
+          "#dbd8d0",
+          "#f2eee5"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "#a7b09f",
+        "tonalRamp": [
+          "#242623",
+          "#3c403a",
+          "#5c6158",
+          "#798073",
+          "#969e8f",
+          "#b3bdaa",
+          "#d0dbc6",
+          "#e6f2db"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Muted Foreground",
+        "canonical": "#a0a59b",
+        "tonalRamp": [
+          "#252624",
+          "#3e403c",
+          "#5e615b",
+          "#7c8078",
+          "#999e95",
+          "#b7bdb1",
+          "#d5dbce",
+          "#ebf2e4"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The page headline, once per route."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "A section verdict: states the finding, not the topic."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "A block heading inside a section."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running technical prose, held to a 64ch measure."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Monospace (ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas). Anything a machine produced: units, part numbers, evidence grades."
+      }
+    },
+    "shadows": [
+      {
+        "name": "overlay",
+        "value": "0 12px 32px rgba(0,0,0,0.45)",
+        "purpose": "Modals, drawers and the deck viewer. The site's standard overlay lift; 8 uses."
+      },
+      {
+        "name": "overlay-deep",
+        "value": "0 16px 48px rgba(0,0,0,0.4)",
+        "purpose": "The largest floating surfaces, where the page behind must recede."
+      },
+      {
+        "name": "hover-lift",
+        "value": "0 4px 20px #00000033",
+        "purpose": "The only shadow that appears in response to a pointer, on interactive cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state",
+        "value": "0.15s ease",
+        "purpose": "Interactive state change. Properties are always enumerated; transition: all is banned."
+      },
+      {
+        "name": "reveal",
+        "value": "0.5s cubic-bezier(.2,.7,.2,1)",
+        "purpose": "One entry reveal per block, after which transitions hand back to the element."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "card",
+        "value": "720px"
+      },
+      {
+        "name": "nav",
+        "value": "800px"
+      },
+      {
+        "name": "phone",
+        "value": "650px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single call to action on a route.",
+      "html": "<button class=\"ds-btn-primary\">Discuss your application</button>",
+      "css": ".ds-btn-primary{background:var(--copper,#d4a36e);color:var(--background,#101212);border:0;border-radius:4px;padding:10px 16px;min-height:44px;font:500 .875rem Arial,Helvetica,sans-serif;cursor:pointer;transition:background-color .15s ease,color .15s ease}.ds-btn-primary:hover{background:#e0b47f}.ds-btn-primary:focus-visible{outline:2px solid var(--ring,#d9ac78);outline-offset:2px}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "A cross-section or outbound link, set in running text.",
+      "css": ".ds-text-link{display:inline-flex;align-items:center;gap:7px;min-height:24px;background:none;border:0;color:var(--copper,#d4a36e);font:.9375rem Arial,Helvetica,sans-serif;text-underline-offset:3px;cursor:pointer}.ds-text-link:hover{text-decoration:underline}.ds-text-link:focus-visible{outline:2px solid var(--ring,#d9ac78);outline-offset:3px}",
+      "html": "<button class=\"ds-text-link\">Control-loop budget <svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></button>"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "A panel on the ink ground. Flat at rest.",
+      "html": "<article class=\"ds-card\"><p class=\"ds-card-kicker\">EVIDENCE</p><h3 class=\"ds-card-h\">Post-route</h3><p class=\"ds-card-b\">Reported by the timing tool on the routed netlist.</p></article>",
+      "css": ".ds-card{background:var(--popover,#191d1b);border:1px solid rgba(72,84,64,.4);border-radius:6px;padding:16px 20px;max-width:360px}.ds-card-kicker{margin:0 0 6px;font:.75rem monospace;letter-spacing:.08em;text-transform:uppercase;color:#a7b09f}.ds-card-h{margin:0 0 6px;font:1.35rem Georgia,serif;color:#eeeae2}.ds-card-b{margin:0;font:.9375rem/1.65 Arial,sans-serif;color:#eeeae2}"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "An enquiry field. 44px tall, copper focus ring, error message beneath.",
+      "html": "<label class=\"ds-label\" for=\"ds-i\">Company or organization *</label><input id=\"ds-i\" class=\"ds-input\" placeholder=\"Example Drives Ltd…\">",
+      "css": ".ds-label{display:block;margin-bottom:7px;font:.75rem monospace;letter-spacing:.08em;text-transform:uppercase;color:#a7b09f}.ds-input{width:260px;min-height:44px;padding:11px 13px;background:var(--popover,#191d1b);border:1px solid var(--border,#3d453b);border-radius:6px;color:#eeeae2;font:.9375rem Arial,sans-serif}.ds-input::placeholder{color:#a0a59b;opacity:1}.ds-input:focus-visible{outline:2px solid var(--ring,#d9ac78);outline-offset:2px}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "A catalogue filter. Selected state is a copper border and copper text, never a stripe.",
+      "html": "<button class=\"ds-chip\">Rotating machinery <span class=\"ds-chip-n\">8</span></button><button class=\"ds-chip is-on\">Electrical signature <span class=\"ds-chip-n\">8</span></button>",
+      "css": ".ds-chip{min-height:44px;padding:8px 14px;margin-right:8px;background:#191d1b;border:1px solid rgba(72,84,64,.4);border-radius:4px;color:#a7b09f;font:.875rem Arial,sans-serif;cursor:pointer;transition:color .15s ease,border-color .15s ease,background-color .15s ease}.ds-chip:hover{border-color:#d4a36e}.ds-chip.is-on{border-color:#d4a36e;color:#d4a36e;background:#1a201d}.ds-chip-n{font:.75rem monospace;opacity:.75}.ds-chip:focus-visible{outline:2px solid #d9ac78;outline-offset:2px}"
+    },
+    {
+      "name": "Cross-Reference Block",
+      "kind": "custom",
+      "refersTo": "related",
+      "description": "The signature close on every route: sibling sections with a reason each, then the documents behind the page.",
+      "html": "<aside class=\"ds-rel\"><p class=\"ds-rel-k\">Where to go next</p><a class=\"ds-rel-row\" href=\"#\"><span class=\"ds-rel-tag\">02.2 / CONTROL LOOP</span><span class=\"ds-rel-name\">Control loop</span><span class=\"ds-rel-why\">The cycle budget every task on this page is spending.</span></a></aside>",
+      "css": ".ds-rel{border-top:1px solid rgba(72,84,64,.4);padding-top:26px}.ds-rel-k{margin:0 0 18px;font:.75rem monospace;letter-spacing:.08em;text-transform:uppercase;color:#a7b09f}.ds-rel-row{display:grid;grid-template-columns:13rem 1fr;column-gap:22px;row-gap:4px;padding:14px 4px;border-block:1px solid rgba(72,84,64,.4);text-decoration:none;transition:background-color .18s ease}.ds-rel-row:hover{background:#191d1b}.ds-rel-tag{font:.75rem monospace;letter-spacing:.08em;text-transform:uppercase;color:#a7b09f}.ds-rel-name{font:1.05rem Georgia,serif;color:#d4a36e}.ds-rel-why{grid-column:2;font:.9375rem/1.65 Arial,sans-serif;color:#eeeae2}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Datasheet That Argues",
+    "overview": "A semiconductor reference document that happens to be a website: serif headings that state a finding, sans-serif body at a comfortable measure, monospace for anything a machine produced. Dark, because the imagery it carries is photographic and dark. The restraint is the argument: every figure carries the kind of evidence behind it, and claims that failed verification are printed with the reason they were withdrawn, so a visual system that shouted would undercut the content.",
+    "keyCharacteristics": [
+      "Dark ink ground, warm copper accent, one cool teal reserved for the safe state",
+      "Serif display over sans body over monospace labels: three voices, never four",
+      "Rules and type carry structure; shadows appear only on overlays and on hover",
+      "Evidence grade printed next to figures, not implied",
+      "Reduced motion is a first-class path, not a fallback"
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "Copper is the only accent. A new state gets a new shape, weight or position, not a new hue. Teal is the single exception and it means safe, nothing else.",
+        "section": "colors"
+      },
+      {
+        "name": "The Named Colour Rule",
+        "body": "A colour used more than once is a token. The codebase holds 1,065 literal colour values against 1,209 token references across 524 distinct literals, including 140 distinct near-blacks for 293 uses. That is drift, not a ramp.",
+        "section": "colors"
+      },
+      {
+        "name": "The Alpha Is Not A Colour Rule",
+        "body": "#d4a36e1f is copper at 12%, not a separate colour. Express it from the token so a change to copper reaches every place copper is implied.",
+        "section": "colors"
+      },
+      {
+        "name": "The Verdict Heading Rule",
+        "body": "A heading states the finding, not the topic. A heading that ends in a question mark has not been written yet.",
+        "section": "typography"
+      },
+      {
+        "name": "The Machine Voice Rule",
+        "body": "Monospace means a machine produced it. Prose never sets itself in monospace for texture.",
+        "section": "typography"
+      },
+      {
+        "name": "The Joined Quantity Rule",
+        "body": "A number and its unit are joined by a non-breaking space, and numerals are set as tabular figures.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Halo Rule",
+        "body": "A zero-offset coloured box-shadow is banned and gated in the build. A shadow has an offset, or it is not a shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Resting Flatness Rule",
+        "body": "A surface that is part of the page carries no shadow. A shadow means the element is above the page, or is responding to a pointer.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No Side Tab Rule",
+        "body": "A thick coloured border on one edge of a panel is banned. State is carried by the whole frame, the background tint and the label.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do state a finding in a heading, and print the evidence grade next to a figure.",
+      "Do use one of the fourteen named colours. A colour used twice is a token.",
+      "Do join a number to its unit with a non-breaking space, and set numerals as tabular figures.",
+      "Do enumerate the properties a transition animates.",
+      "Do give every scroll-driven surface a complete resting state, and a reduced-motion path.",
+      "Do keep body text inside the 64ch measure."
+    ],
+    "donts": [
+      "Don't add a second accent hue. Teal means safe and nothing else.",
+      "Don't use transition: all, a zero-offset coloured halo, or a coloured stripe down one edge of a panel. All three are gated in the build.",
+      "Don't write a new near-black. There are already 140 of them and that is the system's one real defect.",
+      "Don't set prose in monospace, or a machine-produced value in the serif.",
+      "Don't put a number on the page that no source document carries."
+    ]
+  }
+}

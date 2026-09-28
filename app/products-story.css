@@ -1,0 +1,94 @@
+/* The Products story beats (app/products-story.tsx, docs/products-story.md). Tokens only, per
+   DESIGN.md: copper is the one accent, teal marks the safe state (the bridge turned off) and
+   nothing else, hardware and CPU shares reuse /control's dr-seg-hw and dr-seg-cpu. */
+
+/* ---------- tension: self-test vs lockstep, then the fault path ---------- */
+.ps-why { display: grid; gap: 28px; }
+.ps-contrast { width: 100%; border-collapse: collapse; font-size: var(--text-control); }
+.ps-contrast th, .ps-contrast td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); line-height: 1.55; }
+.ps-contrast thead th { font-size: var(--text-meta); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); font-weight: 400; }
+.ps-contrast thead th:last-child { color: var(--copper); }
+.ps-contrast tbody th { color: var(--ink-2); font-weight: 400; width: 22%; }
+.ps-contrast td:nth-child(2) { color: var(--muted-foreground); }
+.ps-contrast td:last-child { color: var(--foreground); }
+
+.ps-fault { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.ps-fault li { position: relative; padding: 16px 16px 18px; border: 1px solid var(--border); border-radius: var(--sc-radius-md); background: var(--popover); }
+.ps-fault li[data-last='true'] { border-color: var(--cpu); }
+.ps-fault-n { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--copper); color: var(--copper); font-size: var(--text-meta); font-variant-numeric: tabular-nums; margin-bottom: 12px; }
+.ps-fault li[data-last='true'] .ps-fault-n { border-color: var(--cpu); color: var(--cpu); }
+.ps-fault h3 { font-family: var(--serif); font-weight: 400; font-size: var(--sc-t-block); margin: 0 0 8px; text-wrap: balance; }
+.ps-fault p { font-size: var(--text-meta); line-height: 1.6; color: var(--ink-2); }
+
+/* ---------- the chip map ---------- */
+.ps-map { border: 1px solid var(--border); border-radius: var(--sc-radius-lg); background: var(--popover); overflow: hidden; }
+.ps-map-tabs { display: flex; border-bottom: 1px solid var(--rule); }
+.ps-map-tabs button { flex: 1; display: grid; gap: 2px; text-align: left; min-height: 56px; padding: 12px 18px; color: var(--ink-2); transition: background-color .15s ease, color .15s ease; }
+.ps-map-tabs button strong { font-weight: 600; font-size: var(--text-control); }
+.ps-map-tabs button span { font-size: var(--text-meta); }
+.ps-map-tabs button[aria-selected='true'] { color: var(--foreground); background: color-mix(in srgb, var(--foreground) 5%, transparent); box-shadow: inset 0 -2px 0 var(--copper); }
+.ps-map-tabs button:focus-visible, .ps-block:focus-visible { outline: 2px solid var(--ring); outline-offset: -2px; }
+
+.ps-map-body { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+.ps-die { display: flex; gap: 14px; padding: 22px; border-right: 1px solid var(--rule); }
+.ps-domain { flex: 1; min-width: 0; padding: 14px; border: 1px dashed var(--border); border-radius: var(--sc-radius-md); }
+.ps-domain-label { font-size: var(--text-meta); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 12px; }
+.ps-grid { display: grid; gap: 8px; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-areas: 'safe safe mem' 'bus bus bus' 'mtr sns com'; }
+
+.ps-block { display: grid; align-content: start; gap: 4px; text-align: left; padding: 12px; min-height: 92px; border: 1px solid var(--border); border-radius: var(--sc-radius-sm); background: var(--background); transition: border-color .15s ease, background-color .15s ease; }
+.ps-block[data-area='safe'] { grid-area: safe; } .ps-block[data-area='mem'] { grid-area: mem; } .ps-block[data-area='bus'] { grid-area: bus; min-height: 0; }
+.ps-block[data-area='mtr'] { grid-area: mtr; } .ps-block[data-area='sns'] { grid-area: sns; } .ps-block[data-area='com'] { grid-area: com; }
+.ps-block strong { font-size: var(--text-control); font-weight: 600; }
+.ps-short { font-size: var(--text-meta); color: var(--ink-2); line-height: 1.45; }
+.ps-code { font: var(--text-meta) var(--font-mono); letter-spacing: .08em; color: var(--copper); }
+.ps-block:hover { border-color: var(--copper); }
+.ps-block[aria-pressed='true'] { border-color: var(--copper); background: color-mix(in srgb, var(--copper) 10%, var(--background)); }
+
+/* 2DOM view: the six groups recede (same design), the new domain carries the accent */
+.ps-map[data-chip='2dom'] .ps-domain:not(.ps-domain-ai) .ps-block:not([aria-pressed='true']) strong { color: var(--ink-2); font-weight: 400; }
+.ps-domain-ai { flex: 0 0 34%; display: grid; align-content: start; gap: 10px; border-style: solid; border-color: var(--copper); }
+.ps-domain-ai .ps-domain-label { color: var(--copper); margin-bottom: 0; }
+.ps-bridge { font-size: var(--text-meta); color: var(--ink-2); padding: 8px 10px; border: 1px dashed var(--border); border-radius: var(--sc-radius-sm); text-align: center; }
+.ps-block-ai { min-height: 140px; }
+
+.ps-detail { padding: 24px; display: grid; align-content: start; gap: 12px; }
+.ps-detail h3 { font-family: var(--serif); font-weight: 400; font-size: var(--heading-card); }
+.ps-detail ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: var(--text-control); line-height: 1.55; }
+.ps-why-line { font-size: var(--text-control); color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 12px; }
+.ps-why-line span { display: block; font: var(--text-meta) var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--copper); margin-bottom: 4px; }
+
+/* ---------- loop cost ---------- */
+.ps-loop { list-style: none; margin: 0; padding: 0; display: grid; }
+.ps-loop li { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) minmax(0, 1.2fr); grid-template-areas: 'rate bar num' 'rate fits fits'; column-gap: 20px; row-gap: 6px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.ps-loop-rate { grid-area: rate; font-family: var(--serif); font-weight: 400; font-size: var(--heading-card); font-variant-numeric: tabular-nums; }
+.ps-loop-bar { grid-area: bar; display: flex; height: 10px; border-radius: 3px; overflow: hidden; background: var(--rule); }
+.ps-loop-bar i { display: block; height: 100%; }
+.ps-loop-num { grid-area: num; font-size: var(--text-meta); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.ps-loop-fits { grid-area: fits; font-size: var(--text-control); }
+
+@media (max-width: 900px) {
+  .ps-fault { grid-template-columns: 1fr; }
+  .ps-map-body { grid-template-columns: 1fr; }
+  .ps-die { flex-direction: column; border-right: 0; border-bottom: 1px solid var(--rule); padding: 14px; }
+  .ps-domain-ai { flex-basis: auto; }
+  .ps-block { min-height: 0; }
+  .ps-block-ai { min-height: 0; }
+  .ps-loop li { grid-template-columns: 4.5rem minmax(0, 1fr); grid-template-areas: 'rate bar' 'num num' 'fits fits'; }
+}
+@media (max-width: 520px) {
+  .ps-grid { grid-template-columns: 1fr 1fr; grid-template-areas: 'safe safe' 'mem bus' 'mtr sns' 'com com'; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ps-map-tabs button, .ps-block { transition: none; }
+}
+
+/* ---------- full specifications, behind a disclosure ---------- */
+.ps-specs { margin-top: 20px; border: 1px solid var(--border); border-radius: var(--sc-radius-md); }
+.ps-specs > summary { cursor: pointer; min-height: 48px; display: flex; align-items: center; padding: 12px 18px; font-size: var(--text-control); color: var(--copper); }
+.ps-specs > summary:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.ps-specs[open] > summary { border-bottom: 1px solid var(--rule); }
+.ps-specs > .table-scroll, .ps-spec-cols { padding: 18px; }
+.ps-spec-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.ps-spec-cols h3 { font-family: var(--serif); font-weight: 400; font-size: var(--heading-card); }
+.ps-spec-status { font-size: var(--text-meta); color: var(--ink-2); margin: 4px 0 10px; }
+@media (max-width: 900px) { .ps-spec-cols { grid-template-columns: 1fr; } }

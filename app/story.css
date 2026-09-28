@@ -1,0 +1,597 @@
+/* Story pages: /applications (app/applications-story.tsx) and /evidence (app/evidence/page.tsx). Rules and type carry the structure, per
+   DESIGN.md: hairlines between beats, serif findings as headings, monospace only for labels and
+   machine values. No cards, no shadows, no side stripes. Tokens are those globals.css and dr.css
+   already define. */
+
+.st-story {
+  display: grid;
+}
+
+/* ---------- a beat: the finding, the argument, the film beside it ---------- */
+.st-beat {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  padding: 56px 0;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 80px;
+}
+.st-beat-text {
+  max-width: 64ch;
+}
+.st-beat-text h2 {
+  font-size: var(--sc-t-section);
+  line-height: var(--sc-lh-section);
+  letter-spacing: var(--sc-track-section);
+  margin: 0 0 20px;
+}
+.st-beat-text > p {
+  font-size: var(--sc-t-body);
+  line-height: var(--sc-lh-body);
+  color: var(--foreground);
+  margin: 0 0 14px;
+  text-wrap: pretty;
+}
+.st-beat.has-aside {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 56px;
+  align-items: start;
+}
+.st-beat-aside {
+  display: grid;
+  gap: 8px;
+}
+/* in the aside the moment is its own block, so it needs no rule above it */
+.st-beat-aside .dr-moment:first-child {
+  margin-top: 6px;
+  padding-top: 0;
+  border-top: 0;
+}
+.st-beat-wide {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+.st-source {
+  margin-top: 18px !important;
+  font: var(--text-meta) / 1.5 var(--font-mono) !important;
+  letter-spacing: var(--sc-track-meta);
+  color: var(--ink-2) !important;
+}
+.st-aside {
+  color: var(--muted-foreground) !important;
+  font-size: var(--text-control) !important;
+}
+
+/* ---------- 1. the answer, and the four families as an index ---------- */
+.st-answer {
+  border-top: 0;
+  padding-top: 8px;
+}
+.st-answer .st-beat-text h2 {
+  font-size: var(--sc-t-page);
+  line-height: var(--sc-lh-page);
+}
+.st-families {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 32px;
+}
+.st-families.st-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.st-families.st-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.st-families.st-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.st-families a {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 20px 0 22px;
+  border-top: 1px solid var(--rule);
+  color: var(--foreground);
+  transition: color .15s ease;
+}
+.st-families a:hover strong {
+  color: var(--copper);
+}
+.st-families a:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+}
+.st-fam-n {
+  font: 2.25rem / 1 var(--serif);
+  color: var(--copper);
+}
+.st-families strong {
+  font-weight: 600;
+  font-size: var(--text-control);
+}
+.st-fam-line {
+  font-size: var(--text-control);
+  line-height: 1.5;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+/* ---------- 3. the four numbers the playbook sizes everything against ---------- */
+.st-figs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 22px 0;
+  border-top: 1px solid var(--rule);
+}
+.st-figs > div {
+  padding: 16px 16px 16px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.st-figs > div:nth-child(odd) {
+  border-right: 1px solid var(--rule);
+}
+.st-figs > div:nth-child(even) {
+  padding-left: 16px;
+}
+.st-figs dt {
+  font: var(--text-meta) / 1.4 var(--font-mono);
+  letter-spacing: var(--sc-track-meta);
+  color: var(--ink-2);
+  text-transform: uppercase;
+}
+.st-figs dd {
+  margin: 6px 0 4px;
+  font: 1.75rem / 1.1 var(--serif);
+  color: var(--copper);
+}
+.st-figs .st-fig-note {
+  margin: 0;
+  font-size: var(--text-control);
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+
+/* ---------- 4. the models the tasks use ---------- */
+.st-table-scroll {
+  overflow-x: auto;
+}
+.st-models {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-control);
+}
+.st-models caption {
+  text-align: left;
+  caption-side: top;
+  padding-bottom: 12px;
+  color: var(--ink-2);
+  font-size: var(--text-control);
+}
+.st-models th,
+.st-models td {
+  text-align: left;
+  padding: 10px 16px 10px 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.st-models thead th {
+  font: var(--text-meta) / 1.4 var(--font-mono);
+  letter-spacing: var(--sc-track-meta);
+  color: var(--ink-2);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.st-models tbody th {
+  font-weight: 600;
+  color: var(--foreground);
+  white-space: nowrap;
+}
+.st-models td {
+  color: var(--muted-foreground);
+}
+.st-models .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.st-models td.num:last-child {
+  color: var(--copper);
+  font-weight: 600;
+}
+
+/* ---------- 5 to 8. the families: every task as problem, signal, what runs ---------- */
+.st-fam-kicker {
+  margin: 0 0 10px !important;
+  font: var(--text-meta) / 1.4 var(--font-mono) !important;
+  letter-spacing: var(--sc-track-meta);
+  text-transform: uppercase;
+  color: var(--ink-2) !important;
+}
+.st-fam-kicker .num {
+  color: var(--copper);
+}
+.st-standards {
+  font-size: var(--text-control) !important;
+  color: var(--ink-2) !important;
+}
+.st-task-head,
+.st-task {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, .75fr) minmax(0, .65fr);
+  gap: 24px;
+}
+.st-task-head {
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--rule);
+  font: var(--text-meta) / 1.4 var(--font-mono);
+  letter-spacing: var(--sc-track-meta);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.st-tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.st-task {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.st-task h3 {
+  margin: 0 0 4px;
+  font-size: var(--sc-t-body);
+  font-weight: 600;
+  color: var(--foreground);
+}
+.st-task-problem p {
+  margin: 0;
+  font-size: var(--text-control);
+  line-height: 1.55;
+  color: var(--muted-foreground);
+}
+.st-task-note {
+  margin-top: 8px !important;
+}
+.st-task-note a {
+  color: var(--copper);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--copper) 45%, transparent);
+}
+.st-task-note a:hover {
+  color: var(--ring);
+}
+.st-task-facts {
+  /* the three facts sit directly on the row's grid, so they line up with the column header */
+  display: contents;
+}
+.st-task-facts dt {
+  /* the column header names these on a wide screen; stacked on a phone, each fact labels itself */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.st-task-facts dd {
+  margin: 0;
+  font-size: var(--text-control);
+  line-height: 1.55;
+  color: var(--foreground);
+}
+.st-task-nums dd {
+  display: grid;
+  gap: 2px;
+  color: var(--ink-2);
+}
+.st-task-nums .num {
+  font-variant-numeric: tabular-nums;
+}
+.st-task-nums .num:first-child {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.st-slow {
+  color: var(--copper);
+}
+.st-slow em {
+  font-style: normal;
+  font-size: var(--text-meta);
+}
+
+/* ---------- 9. the tiers of sensing ---------- */
+.st-tiers {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+.st-tiers li {
+  display: grid;
+  gap: 4px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.st-tiers strong {
+  font-weight: 600;
+  font-size: var(--sc-t-body);
+  color: var(--foreground);
+}
+.st-tiers span {
+  font-size: var(--text-control);
+  line-height: 1.55;
+  color: var(--muted-foreground);
+}
+
+/* ---------- 12. the close ---------- */
+.st-close {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+.st-close-links {
+  display: grid;
+  gap: 4px;
+  justify-items: start;
+}
+.st-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 10px 16px;
+  margin-bottom: 8px;
+  border-radius: var(--sc-radius-sm);
+  background: var(--copper);
+  color: var(--background);
+  font-size: var(--text-control);
+  font-weight: 600;
+  transition: background-color .15s ease;
+}
+.st-primary:hover {
+  background: var(--ring);
+}
+.st-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  color: var(--copper);
+  font-size: var(--text-control);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--copper) 40%, transparent);
+  transition: color .15s ease;
+}
+.st-link:hover {
+  color: var(--ring);
+}
+.st-primary:focus-visible,
+.st-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+/* ---------- narrower screens ---------- */
+@media (max-width: 1100px) {
+  .st-families,
+  .st-families.st-cols-3,
+  .st-families.st-cols-4,
+  .st-families.st-cols-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .st-beat.has-aside {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .st-beat {
+    padding: 40px 0;
+  }
+  .st-task-head {
+    display: none;
+  }
+  .st-task,
+  .st-task-facts {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .st-task-facts > div {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: 12px;
+  }
+  .st-task-facts dt {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    font: var(--text-meta) / 1.55 var(--font-mono);
+    letter-spacing: var(--sc-track-meta);
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .st-task-nums dd {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+  }
+  .st-close {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .st-families,
+  .st-families.st-cols-3,
+  .st-families.st-cols-4,
+  .st-families.st-cols-5 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .st-figs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .st-figs > div:nth-child(odd) {
+    border-right: 0;
+  }
+  .st-figs > div:nth-child(even) {
+    padding-left: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-families a,
+  .st-primary,
+  .st-link {
+    transition: none;
+  }
+}
+
+/* ---------- where it goes: the sockets, each with the tasks that fit ---------- */
+.st-sockets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+.st-sockets > li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 80px;
+}
+.st-sockets h3 {
+  margin: 0 0 6px;
+  font: 1.3rem / 1.25 var(--serif);
+  letter-spacing: var(--sc-track-card);
+  color: var(--foreground);
+}
+.st-sockets p {
+  margin: 0;
+  font-size: var(--text-control);
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  max-width: 60ch;
+}
+.st-socket-limit {
+  margin-top: 8px !important;
+  color: var(--copper) !important;
+}
+.st-sockets ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  gap: 8px;
+}
+.st-sockets ul a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--sc-radius-sm);
+  font-size: var(--text-control);
+  color: var(--foreground);
+  transition: border-color .15s ease, color .15s ease;
+}
+.st-sockets ul a:hover {
+  border-color: var(--copper);
+  color: var(--copper);
+}
+.st-sockets ul a:focus-visible,
+.st-task-where a:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.st-sockets-foot {
+  margin-top: 14px;
+}
+.st-task {
+  scroll-margin-top: 80px;
+}
+.st-task-where {
+  margin-top: 6px !important;
+  font-size: var(--text-meta) !important;
+  color: var(--ink-2) !important;
+}
+.st-task-where a {
+  /* a link in running meta text still needs a 24px target (WCAG 2.5.8); the route gate checks it */
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: var(--copper);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--copper) 40%, transparent);
+}
+@media (max-width: 760px) {
+  .st-sockets > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-sockets ul a { transition: none; }
+}
+
+/* the answer beat opens the page; the DG32 answer below it is a chapter, so it gets the rule back */
+#st-answer {
+  border-top: 1px solid var(--rule);
+  padding-top: 56px;
+}
+
+/* a chip's tag under its name in a register table */
+.st-claim-tag {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--text-meta);
+  font-weight: 400;
+  color: var(--copper);
+}
+/* a citation in a register table stays on one line */
+.st-cite { white-space: nowrap; }
+
+/* Section scene images (app/scene-figure.tsx): a wide, low banner that sets the subject, with a
+   caption that says it is an illustration. The frame is the site's card edge, not a new style. */
+.st-scene { position: relative; margin: 8px 0 40px; border: 1px solid var(--border); border-radius: var(--sc-radius-lg); overflow: hidden; background: var(--background); }
+.st-scene img { display: block; width: 100%; height: clamp(220px, 30vw, 420px); object-fit: cover; }
+.st-scene figcaption { padding: 10px 16px; border-top: 1px solid var(--rule); font-size: var(--text-meta); color: var(--ink-2); line-height: 1.5; }
+
+/* A narrated film in a section (Safety's motion explainer): the card edge, full width, 16:9. */
+.st-film { margin: 0; border: 1px solid var(--border); border-radius: var(--sc-radius-lg); overflow: hidden; background: var(--background); }
+.st-film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--background); }
+.st-film figcaption { padding: 10px 16px; border-top: 1px solid var(--rule); font-size: var(--text-meta); color: var(--ink-2); }
+.st-film { scroll-margin-top: 90px; }
+
+/* Overview motion loops (app/motion-loop.tsx). The frame is the card edge; the pause control is a
+   small square in the corner, 32px, on the surface colour with a visible focus ring. */
+.st-loop { position: relative; margin: 0 0 18px; border: 1px solid var(--border); border-radius: var(--sc-radius-md); overflow: hidden; background: var(--background); }
+.st-loop video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--background); }
+.st-loop-wide { margin: 8px 0 24px; border-radius: var(--sc-radius-lg); }
+.st-loop-wide video { aspect-ratio: 3 / 1; }
+.st-loop-btn { position: absolute; right: 8px; bottom: 8px; width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: var(--sc-radius-sm); background: color-mix(in srgb, var(--background) 82%, transparent); color: var(--foreground); transition: border-color .15s ease; }
+.st-loop-btn:hover { border-color: var(--copper); }
+.st-loop-btn:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+/* The company wordmark in the top bar and the "Deepgrid Semi" home entry in the menu, as on
+   deepgridsemi.com. The wordmark is the official white artwork on a transparent ground. */
+.brand-wordmark { display: block; height: 32px; width: auto; }
+.nav-home-icon { display: inline-block; width: 20px; height: 20px; margin-right: 8px; vertical-align: -4px; object-fit: contain; }
+@media (max-width: 720px) { .brand-wordmark { height: 26px; } }
+
+/* Company recognition: the two award images side by side, one column on a phone. */
+.st-recog { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.st-recog figure { margin: 0; border: 1px solid var(--border); border-radius: var(--sc-radius-md); overflow: hidden; background: var(--background); }
+.st-recog img { display: block; width: 100%; height: clamp(220px, 28vw, 380px); object-fit: cover; }
+.st-recog figcaption { padding: 10px 14px; border-top: 1px solid var(--rule); font-size: var(--text-meta); color: var(--ink-2); }
+@media (max-width: 900px) { .st-recog { grid-template-columns: 1fr; } }
+
+/* A single supporting render beside a section's argument (Products portfolio). */
+.st-art { margin: 0 0 24px; max-width: 544px; }
+.st-art img { display: block; width: 100%; height: auto; border-radius: var(--sc-radius-md); }
+.st-art figcaption { margin-top: 8px; font-size: var(--text-meta); color: var(--ink-2); }

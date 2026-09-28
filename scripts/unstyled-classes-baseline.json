@@ -1,0 +1,18 @@
+{
+  "_why": "Class names used in the original single-page app that carry no CSS rule. Inherited, not introduced by the multi-page rebuild, and not yet reviewed. scripts/check-classes.mjs fails on anything NOT in this list, so the debt cannot grow. Remove entries as they are styled or deleted.",
+  "classes": [
+    "dr-arch",
+    "dr-padplan",
+    "dr-ask-section",
+    "dr-doc-pill-badge",
+    "dr-doc-pill-label",
+    "dr-matrix-cell-name",
+    "dr-matrix-cell-doc",
+    "dr-matrix-cell-standards",
+    "dr-matrix-cell-actions",
+    "dr-tech-specs",
+    "dr-doc-card-top",
+    "dr-reader-copy-btn",
+    "dr-fault-copy"
+  ]
+}

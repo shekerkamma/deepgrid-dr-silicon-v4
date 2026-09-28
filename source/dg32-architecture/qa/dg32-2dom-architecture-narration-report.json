@@ -1,0 +1,443 @@
+{
+  "voice": "bm_george",
+  "speed": 1.05,
+  "slide_speeds": {
+    "1": 0.96,
+    "2": 1.01,
+    "3": 0.94,
+    "5": 1.01,
+    "7": 0.99,
+    "8": 0.96,
+    "12": 1.0,
+    "13": 0.99
+  },
+  "sentence_pause_s": 0.55,
+  "wpm_band": [
+    140,
+    155
+  ],
+  "wpm_gate": [
+    135,
+    160
+  ],
+  "overall_wpm": 152.0,
+  "median_f0_hz": 141.2,
+  "holt_f0_hz": 135.6,
+  "total_seconds": 360.4,
+  "failed_slides": [],
+  "slides": [
+    {
+      "slide": 1,
+      "speed": 0.96,
+      "seconds": 28.53,
+      "spoken_words": 73,
+      "wpm": 153.5,
+      "median_f0_hz": 141.2,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "DG32-2DOM is the attention variant of Deepgrid Semi's DG32-LITE motor-control chip.",
+          "start": 0.0,
+          "end": 7.923
+        },
+        {
+          "text": "It keeps the dual-core lockstep controller and adds an INT8 attention engine on its own clock, so a drive can watch its own motor for faults.",
+          "start": 8.473,
+          "end": 17.955
+        },
+        {
+          "text": "The design is complete and in physical trials.",
+          "start": 18.505,
+          "end": 21.859
+        },
+        {
+          "text": "Every figure here is a post-route, simulated or analytic value, and each one is labelled.",
+          "start": 22.409,
+          "end": 28.533
+        }
+      ]
+    },
+    {
+      "slide": 2,
+      "speed": 1.01,
+      "seconds": 27.85,
+      "spoken_words": 70,
+      "wpm": 150.8,
+      "median_f0_hz": 141.2,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "Here is the answer on one slide.",
+          "start": 0.0,
+          "end": 2.395
+        },
+        {
+          "text": "DG32-2DOM is DG32-LITE plus an attention engine, not a new core.",
+          "start": 2.945,
+          "end": 9.23
+        },
+        {
+          "text": "The lockstep CPU pair, boot path, peripherals and sixty-four-pin pinout are identical.",
+          "start": 9.78,
+          "end": 15.842
+        },
+        {
+          "text": "The engine runs at one hundred fourteen megahertz, its output is bit-exact to the software model, and one query row costs about thirty-two hundred cycles, by analysis.",
+          "start": 16.392,
+          "end": 27.853
+        }
+      ]
+    },
+    {
+      "slide": 3,
+      "speed": 0.94,
+      "seconds": 25.12,
+      "spoken_words": 65,
+      "wpm": 155.2,
+      "median_f0_hz": 141.2,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "Three findings forced the design.",
+          "start": 0.0,
+          "end": 2.465
+        },
+        {
+          "text": "The lockstep core tops out around fifty-five to sixty-two megahertz, so the control domain has to stay at fifty.",
+          "start": 3.015,
+          "end": 10.641
+        },
+        {
+          "text": "The engine is the throughput consumer, so it gets its own faster clock.",
+          "start": 11.191,
+          "end": 15.968
+        },
+        {
+          "text": "And adding its memory to the DG32-LITE floorplan made routing time out, so the variant gets a larger die of its own.",
+          "start": 16.518,
+          "end": 25.123
+        }
+      ]
+    },
+    {
+      "slide": 4,
+      "speed": 1.05,
+      "seconds": 25.02,
+      "spoken_words": 61,
+      "wpm": 146.3,
+      "median_f0_hz": 142.0,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "This is the architecture.",
+          "start": 0.0,
+          "end": 1.724
+        },
+        {
+          "text": "On the left, the fifty megahertz control domain: everything in DG32-LITE.",
+          "start": 2.274,
+          "end": 7.734
+        },
+        {
+          "text": "On the right, the one hundred fourteen megahertz compute domain: the attention engine and its key and value buffers.",
+          "start": 8.284,
+          "end": 15.343
+        },
+        {
+          "text": "Between them sit three clock-domain bridges.",
+          "start": 15.893,
+          "end": 18.764
+        },
+        {
+          "text": "The engine reaches memory only through those bridges, so it can never stall the control core.",
+          "start": 19.314,
+          "end": 25.017
+        }
+      ]
+    },
+    {
+      "slide": 5,
+      "speed": 1.01,
+      "seconds": 27.01,
+      "spoken_words": 69,
+      "wpm": 153.3,
+      "median_f0_hz": 141.2,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "None of the base chip is redesigned.",
+          "start": 0.0,
+          "end": 2.504
+        },
+        {
+          "text": "The safety pair and its fault latch, the boot ROM and memory, and every motor and sensing block come straight from DG32-LITE's own design files.",
+          "start": 3.054,
+          "end": 13.491
+        },
+        {
+          "text": "So the control loop still costs roughly three hundred hardware cycles, and because the engine needs no pins, the nine-by-nine millimetre package and its pinout stay put.",
+          "start": 14.041,
+          "end": 24.665
+        },
+        {
+          "text": "Only the clocking changes.",
+          "start": 25.215,
+          "end": 27.005
+        }
+      ]
+    },
+    {
+      "slide": 6,
+      "speed": 1.05,
+      "seconds": 24.57,
+      "spoken_words": 60,
+      "wpm": 146.5,
+      "median_f0_hz": 142.0,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "One kick computes a band of query rows of one attention head, end to end.",
+          "start": 0.0,
+          "end": 4.768
+        },
+        {
+          "text": "Firmware programs the shapes.",
+          "start": 5.318,
+          "end": 7.065
+        },
+        {
+          "text": "A shared multiply array computes Q times K transpose.",
+          "start": 7.615,
+          "end": 11.761
+        },
+        {
+          "text": "A row maximum indexes a table of softmax weights.",
+          "start": 12.311,
+          "end": 15.953
+        },
+        {
+          "text": "The engine forms the weighted sum, divides once per row, saturates the result to INT8, and writes the output back to memory.",
+          "start": 16.503,
+          "end": 24.568
+        }
+      ]
+    },
+    {
+      "slide": 7,
+      "speed": 0.99,
+      "seconds": 31.16,
+      "spoken_words": 79,
+      "wpm": 152.1,
+      "median_f0_hz": 140.4,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "Why not squeeze the engine down to four bits?",
+          "start": 0.0,
+          "end": 2.94
+        },
+        {
+          "text": "Because attention spreads its weight thin.",
+          "start": 3.49,
+          "end": 6.046
+        },
+        {
+          "text": "Across roughly four hundred keys that look alike, each key earns about a quarter of one percent, and four-bit arithmetic cannot represent that: every weight became zero, and so did the answer.",
+          "start": 6.596,
+          "end": 19.117
+        },
+        {
+          "text": "The engine instead carries weights at fifteen bits through a forty-bit sum, which holds exactly past a hundred thousand keys, and only narrows to INT8 at the very end.",
+          "start": 19.667,
+          "end": 31.158
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "speed": 0.96,
+      "seconds": 30.88,
+      "spoken_words": 80,
+      "wpm": 155.4,
+      "median_f0_hz": 142.0,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "An engine that streamed its data across the shared bus would spend its time fighting the CPU for it.",
+          "start": 0.0,
+          "end": 6.55
+        },
+        {
+          "text": "So its working data is loaded once per kick into memory right beside it, and each query row rereads what is already there.",
+          "start": 7.1,
+          "end": 15.751
+        },
+        {
+          "text": "That keeps one attention head near one percent of bus time; resending the data for each row would cost roughly four hundred times as much.",
+          "start": 16.301,
+          "end": 25.644
+        },
+        {
+          "text": "The DMA can even do the loading without involving the processor.",
+          "start": 26.194,
+          "end": 30.88
+        }
+      ]
+    },
+    {
+      "slide": 9,
+      "speed": 1.05,
+      "seconds": 26.66,
+      "spoken_words": 68,
+      "wpm": 153.1,
+      "median_f0_hz": 141.2,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "The usual way to join two clocks is a FIFO buffer.",
+          "start": 0.0,
+          "end": 3.67
+        },
+        {
+          "text": "This design skips it, because data crosses between the domains so seldom: inputs go over once, and results come back once.",
+          "start": 4.22,
+          "end": 12.479
+        },
+        {
+          "text": "A four-phase request and acknowledge, synchronised on arrival, is small and easy to prove safe.",
+          "start": 13.029,
+          "end": 19.115
+        },
+        {
+          "text": "Programming commands cross one after another, and a whole block of reads or writes travels as a single transfer.",
+          "start": 19.665,
+          "end": 26.656
+        }
+      ]
+    },
+    {
+      "slide": 10,
+      "speed": 1.05,
+      "seconds": 30.96,
+      "spoken_words": 78,
+      "wpm": 151.2,
+      "median_f0_hz": 140.4,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "The engine's cost can be worked out before silicon, because it is plain arithmetic.",
+          "start": 0.0,
+          "end": 4.904
+        },
+        {
+          "text": "At sixteen lanes and four hundred keys, with keys of thirty-two bytes and values of sixty-four, combining the values takes half of each row, about sixteen hundred cycles.",
+          "start": 5.454,
+          "end": 16.597
+        },
+        {
+          "text": "Scoring the keys takes a quarter, requantising about seven hundred, and the divide just forty-eight, roughly thirty-two hundred and forty in all.",
+          "start": 17.147,
+          "end": 26.001
+        },
+        {
+          "text": "A bench measurement replaces that estimate once first silicon arrives.",
+          "start": 26.551,
+          "end": 30.955
+        }
+      ]
+    },
+    {
+      "slide": 11,
+      "speed": 1.05,
+      "seconds": 25.58,
+      "spoken_words": 64,
+      "wpm": 150.1,
+      "median_f0_hz": 140.4,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "Splitting the clocks worked: both domains close timing after place-and-route, with positive slack.",
+          "start": 0.0,
+          "end": 6.028
+        },
+        {
+          "text": "The fifty megahertz control side has zero point three nanoseconds of slack, and the one hundred fourteen megahertz engine side zero point one nine, on a die of three point four by four point five millimetres.",
+          "start": 6.578,
+          "end": 20.251
+        },
+        {
+          "text": "Those are layout results, not silicon; the silicon numbers come with bring-up.",
+          "start": 20.801,
+          "end": 25.578
+        }
+      ]
+    },
+    {
+      "slide": 12,
+      "speed": 1.0,
+      "seconds": 31.17,
+      "spoken_words": 80,
+      "wpm": 154.0,
+      "median_f0_hz": 139.5,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "What is it for?",
+          "start": 0.0,
+          "end": 1.058
+        },
+        {
+          "text": "Catching a wearing bearing, or a drive that starts behaving oddly, without an extra processor on the board, because the motor controller watches its own motor.",
+          "start": 1.608,
+          "end": 11.635
+        },
+        {
+          "text": "The STM32G0 can only run that kind of model in software, so a hardware engine sets DG32-2DOM apart.",
+          "start": 12.185,
+          "end": 21.875
+        },
+        {
+          "text": "On the roadmap it runs alongside DG32-LITE's first silicon, with its design finished and undergoing physical trials.",
+          "start": 22.425,
+          "end": 31.175
+        }
+      ]
+    },
+    {
+      "slide": 13,
+      "speed": 0.99,
+      "seconds": 25.92,
+      "spoken_words": 66,
+      "wpm": 152.8,
+      "median_f0_hz": 139.5,
+      "in_gate": true,
+      "sentences": [
+        {
+          "text": "So what should stay with you?",
+          "start": 0.0,
+          "end": 1.564
+        },
+        {
+          "text": "First, the safety controller was left alone; the engine was built around it, not into it.",
+          "start": 2.114,
+          "end": 7.876
+        },
+        {
+          "text": "Second, nothing is lost to rounding, and the hardware reproduces the reference software's output exactly.",
+          "start": 8.426,
+          "end": 15.111
+        },
+        {
+          "text": "Third, the price of each row is already known from analysis, at about thirty-two hundred cycles.",
+          "start": 15.661,
+          "end": 21.702
+        },
+        {
+          "text": "The next step is to measure all of it on real silicon.",
+          "start": 22.252,
+          "end": 25.918
+        }
+      ]
+    }
+  ]
+}

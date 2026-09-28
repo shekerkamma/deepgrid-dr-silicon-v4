@@ -1,0 +1,9 @@
+Render this design specification exactly as a photograph.
+
+DESIGN SPEC
+Canvas: landscape 3:2.
+Style: Photorealistic product/scene photograph, low-key lighting on a near-black cool background (#101212), one warm copper rim light (#d4a36e), shallow depth of field, crisp detail, restrained and engineering-grade, no people.
+
+SCENE: A 200 mm silicon wafer on a dark matte surface at a low angle, its surface a grid of many identical small square dies catching iridescent copper and bronze interference colours from the rim light; the far edge falls into darkness.
+
+RULES: absolutely no text, no letters, no numbers, no logos, no brand names, no readable displays or screens, no chip markings, no watermark; no neon, no sci-fi holograms; no blue light.

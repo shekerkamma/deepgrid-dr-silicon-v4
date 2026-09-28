@@ -1,0 +1,79 @@
+{
+  "duration": 259.21,
+  "chapters": [
+    {
+      "title": "What changes",
+      "slides": [
+        1,
+        4
+      ],
+      "start": 0.0,
+      "end": 116.38
+    },
+    {
+      "title": "The engine",
+      "slides": [
+        5,
+        7
+      ],
+      "start": 116.38,
+      "end": 208.94
+    },
+    {
+      "title": "Board and takeaways",
+      "slides": [
+        8,
+        9
+      ],
+      "start": 208.94,
+      "end": 259.21
+    }
+  ],
+  "segments": [
+    {
+      "slide": 1,
+      "start": 0.0,
+      "duration": 28.15
+    },
+    {
+      "slide": 2,
+      "start": 28.15,
+      "duration": 30.64
+    },
+    {
+      "slide": 3,
+      "start": 58.79,
+      "duration": 32.37
+    },
+    {
+      "slide": 4,
+      "start": 91.16,
+      "duration": 25.22
+    },
+    {
+      "slide": 5,
+      "start": 116.38,
+      "duration": 28.92
+    },
+    {
+      "slide": 6,
+      "start": 145.3,
+      "duration": 30.31
+    },
+    {
+      "slide": 7,
+      "start": 175.61,
+      "duration": 33.33
+    },
+    {
+      "slide": 8,
+      "start": 208.94,
+      "duration": 20.21
+    },
+    {
+      "slide": 9,
+      "start": 229.15,
+      "duration": 30.06
+    }
+  ]
+}

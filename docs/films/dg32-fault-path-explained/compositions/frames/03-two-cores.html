@@ -1,0 +1,78 @@
+<template>
+<style>
+
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgia.ttf") format("truetype");font-weight:400;font-style:normal}
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgiai.ttf") format("truetype");font-weight:400;font-style:italic}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arial.ttf") format("truetype");font-weight:400}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arialbd.ttf") format("truetype");font-weight:700}
+@font-face{font-family:"DG Mono";src:url("assets/fonts/cour.ttf") format("truetype");font-weight:400}
+
+
+#root{position:absolute;inset:0;color:#eeeae2;font-family:"DG Sans",sans-serif;overflow:hidden}
+#f03-bg{position:absolute;inset:0;background:#101212}
+#f03-grid{position:absolute;inset:0;opacity:.35;background-image:linear-gradient(#3d453b22 1px,transparent 1px),linear-gradient(90deg,#3d453b22 1px,transparent 1px);background-size:80px 80px}
+.f03-kicker{position:absolute;left:120px;top:92px;font-family:"DG Mono",monospace;font-size:24px;letter-spacing:4px;color:#d4a36e;text-transform:uppercase}
+.f03-title{position:absolute;left:120px;top:132px;font-family:"DG Serif",serif;font-size:76px;line-height:1.05;letter-spacing:-1.5px;color:#eeeae2;margin:0}
+.f03-title em{font-style:italic;color:#c5c2b3}
+.f03-lbl{font-family:"DG Mono",monospace;font-size:24px;letter-spacing:3px;color:#a7b09f;text-transform:uppercase}
+.f03-box{position:absolute;border:2px solid #3d453b;border-radius:10px;background:#191d1b;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px}
+.f03-box b{font-family:"DG Sans",sans-serif;font-weight:700;font-size:30px;letter-spacing:1px;color:#eeeae2}
+.f03-box span{font-family:"DG Mono",monospace;font-size:22px;letter-spacing:2px;color:#a7b09f;text-transform:uppercase}
+.f03-val{font-family:"DG Mono",monospace;font-size:34px;letter-spacing:2px;color:#eeeae2}
+
+
+#f03-main{left:420px;top:330px;width:360px;height:170px}
+#f03-chk{left:420px;top:600px;width:360px;height:170px}
+#f03-cmp{left:1300px;top:465px;width:320px;height:170px}
+#f03-in{position:absolute;left:160px;top:545px;font-family:"DG Mono",monospace;font-size:20px;letter-spacing:3px;color:#a7b09f}
+#f03-lag{position:absolute;left:810px;top:665px;font-family:"DG Mono",monospace;font-size:22px;letter-spacing:3px;color:#d4a36e}
+#f03-wires{position:absolute;inset:0;width:1920px;height:1080px}
+.f03-chip{position:absolute;padding:8px 16px;border:2px solid #3d453b;border-radius:8px;background:#101212;font-family:"DG Mono",monospace;font-size:28px;color:#eeeae2}
+#f03-ok{position:absolute;left:1640px;top:512px;font-family:"DG Serif",serif;font-size:72px;color:#d4a36e}
+
+</style>
+<div id="root" data-composition-id="03-two-cores" data-width="1920" data-height="1080">
+  <div id="f03-bg" class="clip" data-start="0" data-duration="15.573" data-track-index="0"></div>
+  <div id="f03-grid" class="clip" data-start="0" data-duration="15.573" data-track-index="1"></div>
+  <div id="f03-stage" class="clip" data-start="0" data-duration="15.573" data-track-index="2">
+
+    <div class="f03-kicker" id="f03-k">DG32-LITE · Lockstep</div>
+    <h1 class="f03-title" id="f03-t">Two cores, <em>one answer</em></h1>
+    <svg id="f03-wires" viewBox="0 0 1920 1080">
+      <path id="f03-win" d="M300 560 H360 V415 H420 M360 560 V685 H420" fill="none" stroke="#3d453b" stroke-width="3"/>
+      <path id="f03-wout" d="M780 415 H1040 V520 H1300 M780 685 H1040 V580 H1300" fill="none" stroke="#3d453b" stroke-width="3"/>
+    </svg>
+    <div class="f03-box" id="f03-main"><b>MAIN</b><span>RV32IM · runs the code</span></div>
+    <div class="f03-box" id="f03-chk"><b>CHECKER</b><span>same instructions</span></div>
+    <div class="f03-box" id="f03-cmp"><b>COMPARATOR</b><span>every committed store</span></div>
+    <div id="f03-in">INPUTS</div>
+    <div id="f03-lag">+2 CYCLES</div>
+    <div class="f03-chip" id="f03-c1" style="left:830px;top:388px">0x3A7F</div>
+    <div class="f03-chip" id="f03-c2" style="left:830px;top:658px">0x3A7F</div>
+    <div id="f03-ok">=</div>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+(function(){
+  const tl = gsap.timeline({ paused: true });
+  const E = "power3.out";
+
+  tl.fromTo("#f03-k",{opacity:0,y:12},{opacity:1,y:0,duration:.5,ease:E},0.1);
+  tl.fromTo("#f03-t",{opacity:0,y:24},{opacity:1,y:0,duration:.7,ease:E},0.3);
+  tl.fromTo("#f03-main",{opacity:0,y:20},{opacity:1,y:0,duration:.6,ease:E},1.4);
+  tl.fromTo("#f03-chk",{opacity:0,y:20},{opacity:1,y:0,duration:.6,ease:E},4.3);
+  tl.fromTo("#f03-lag",{opacity:0,x:-16},{opacity:1,x:0,duration:.5,ease:E},6.2);
+  tl.fromTo("#f03-win",{strokeDasharray:900,strokeDashoffset:900},{strokeDashoffset:0,duration:1.2,ease:"none"},8.3);
+  tl.fromTo("#f03-in",{opacity:0},{opacity:1,duration:.4},8.6);
+  tl.fromTo("#f03-cmp",{opacity:0,y:20},{opacity:1,y:0,duration:.6,ease:E},11.3);
+  tl.fromTo("#f03-wout",{strokeDasharray:1400,strokeDashoffset:1400},{strokeDashoffset:0,duration:1.0,ease:"none"},11.6);
+  tl.fromTo("#f03-c1",{opacity:0,x:0},{opacity:1,x:280,duration:1.4,ease:"power1.inOut"},12.0);
+  tl.fromTo("#f03-c2",{opacity:0,x:0},{opacity:1,x:280,duration:1.4,ease:"power1.inOut"},12.9);
+  tl.fromTo("#f03-ok",{opacity:0,scale:.6},{opacity:1,scale:1,duration:.5,ease:"back.out(2)"},14.6);
+
+  window.__timelines["03-two-cores"] = tl;
+})();
+</script>
+</template>

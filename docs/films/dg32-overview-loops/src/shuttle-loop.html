@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1920, height=640"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgia.ttf") format("truetype");font-weight:400;font-style:normal}
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgiai.ttf") format("truetype");font-weight:400;font-style:italic}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arial.ttf") format("truetype");font-weight:400}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arialbd.ttf") format("truetype");font-weight:700}
+@font-face{font-family:"DG Mono";src:url("assets/fonts/cour.ttf") format("truetype");font-weight:400}
+
+body{margin:0;background:#101212}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#101212;color:#eeeae2;font-family:"DG Sans",sans-serif}
+#grid{position:absolute;inset:0;opacity:.4;background-image:linear-gradient(#3d453b22 1px,transparent 1px),linear-gradient(90deg,#3d453b22 1px,transparent 1px);background-size:40px 40px}
+.mono{font-family:"DG Mono",monospace;letter-spacing:2px;text-transform:uppercase}
+.box{position:absolute;border:2px solid #3d453b;border-radius:10px;background:#191d1b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
+
+#ring{position:absolute;inset:0;width:1920px;height:640px}
+.stg b{font-family:"DG Serif",serif;font-weight:400;font-size:34px}
+#mid{position:absolute;left:590px;top:270px;width:340px;text-align:center}
+#mid b{display:block;font-family:"DG Serif",serif;font-weight:400;font-size:64px;color:#d4a36e;line-height:1}
+#mid span{display:block;margin-top:10px;font-size:24px;color:#a7b09f}
+#dot{position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:#d4a36e}
+#side{position:absolute;left:1340px;top:290px;width:480px;font-size:24px;line-height:1.7;color:#a7b09f}
+
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="shuttle-loop" data-start="0" data-width="1920" data-height="640" data-duration="8">
+  <div id="grid" class="clip" data-start="0" data-duration="8" data-track-index="0"></div>
+  <div id="stage" class="clip" data-start="0" data-duration="8" data-track-index="1">
+
+    <svg id="ring" viewBox="0 0 1920 640"><ellipse cx="760" cy="320" rx="400" ry="230" fill="none" stroke="#3d453b" stroke-width="3"/></svg>
+    <div class="box stg" id="st0" style="left:650px;top:50px;width:220px;height:80px"><b>RTL</b></div><div class="box stg" id="st1" style="left:1050px;top:280px;width:220px;height:80px"><b>GDSII</b></div><div class="box stg" id="st2" style="left:650px;top:510px;width:220px;height:80px"><b>Shuttle</b></div><div class="box stg" id="st3" style="left:250px;top:280px;width:220px;height:80px"><b>Bring-up</b></div>
+    <div id="mid"><b>198 days</b><span class="mono">shuttle to shuttle</span></div>
+    <div id="dot"></div>
+    <div id="side" class="mono">Each spin closes a named gap</div>
+
+  </div>
+</div>
+<script>
+(function(){
+  const tl = gsap.timeline({ paused: true });
+  const E = "power3.out";
+
+  const cx=760,cy=320,r=400,ry=230,p={a:-Math.PI/2};
+  const dot=document.getElementById("dot");
+  const place=()=>{dot.style.transform="translate("+(cx+r*Math.cos(p.a)-14)+"px,"+(cy+ry*Math.sin(p.a)-14)+"px)";};
+  place();
+  tl.fromTo(p,{a:-Math.PI/2},{a:1.5*Math.PI,duration:7.6,ease:"none",onUpdate:place},0.2);
+  [0,1,2,3].forEach(i=>{
+    tl.to("#st"+i,{borderColor:"#d4a36e",duration:.3},0.2+i*1.9);
+    tl.to("#st"+i,{borderColor:"#3d453b",duration:.3},0.2+i*1.9+1.6);
+  });
+
+  window.__timelines["shuttle-loop"] = tl;
+})();
+</script>
+</body>
+</html>

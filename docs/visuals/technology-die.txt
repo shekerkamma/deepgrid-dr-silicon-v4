@@ -1,0 +1,9 @@
+Render this design specification exactly as a photograph.
+
+DESIGN SPEC
+Canvas: landscape 3:2, near-black background.
+Style: Photorealistic product photograph, low-key studio lighting on a near-black background (#101212, cool and very slightly green), a single warm copper rim light (#d4a36e), shallow depth of field, crisp macro detail, restrained and engineering-grade, no people.
+
+SCENE: a bare silicon die photographed from above at a slight angle under a metallurgical microscope, filling most of the frame. Two identical, mirror-image processor-core regions sit side by side in the upper half of the die, clearly the same design repeated twice, with a narrow comparator strip between them. Below them, rows of peripheral blocks and a ring of bond pads around the die edge. Fine metal interconnect texture with iridescent copper and bronze interference colours from the copper light; edges fall off into near-black.
+
+RULES: absolutely no text, no letters, no numbers, no logos, no brand names, no chip markings, no watermark, no labels anywhere in the image; no glowing neon, no sci-fi hologram effects; no teal or blue light.

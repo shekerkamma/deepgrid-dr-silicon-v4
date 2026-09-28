@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=800, height=450"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgia.ttf") format("truetype");font-weight:400;font-style:normal}
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgiai.ttf") format("truetype");font-weight:400;font-style:italic}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arial.ttf") format("truetype");font-weight:400}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arialbd.ttf") format("truetype");font-weight:700}
+@font-face{font-family:"DG Mono";src:url("assets/fonts/cour.ttf") format("truetype");font-weight:400}
+
+body{margin:0;background:#101212}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#101212;color:#eeeae2;font-family:"DG Sans",sans-serif}
+#grid{position:absolute;inset:0;opacity:.4;background-image:linear-gradient(#3d453b22 1px,transparent 1px),linear-gradient(90deg,#3d453b22 1px,transparent 1px);background-size:40px 40px}
+.mono{font-family:"DG Mono",monospace;letter-spacing:2px;text-transform:uppercase}
+.box{position:absolute;border:2px solid #3d453b;border-radius:10px;background:#191d1b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
+
+.fab b{font-family:"DG Serif",serif;font-weight:400;font-size:32px}
+.fab span{font-size:26px;letter-spacing:2px;color:#a7b09f;white-space:nowrap}
+#cap{position:absolute;left:40px;top:40px;font-size:32px;color:#a7b09f}
+#die{position:absolute;left:0;top:0;width:44px;height:44px;border:3px solid #d4a36e;border-radius:4px;background:repeating-linear-gradient(0deg,#d4a36e33 0 6px,transparent 6px 10px)}
+#rail{position:absolute;left:150px;top:330px;width:500px;height:2px;background:#3d453b}
+#foot{position:absolute;left:40px;top:366px;font-size:32px;color:#a7b09f}
+
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="second-source" data-start="0" data-width="800" data-height="450" data-duration="8">
+  <div id="grid" class="clip" data-start="0" data-duration="8" data-track-index="0"></div>
+  <div id="stage" class="clip" data-start="0" data-duration="8" data-track-index="1">
+
+    <div id="cap" class="mono">130 nm · three foundries</div>
+    <div class="box fab" id="f0" style="left:40px;top:150px;width:220px;height:120px"><b>SkyWater</b><span class="mono">USA</span></div><div class="box fab" id="f1" style="left:290px;top:150px;width:220px;height:120px"><b>IHP</b><span class="mono">Germany</span></div><div class="box fab" id="f2" style="left:540px;top:150px;width:220px;height:120px"><b>SCL Mohali</b><span class="mono">India</span></div>
+    <div id="rail"></div>
+    <div id="die"></div>
+    <div id="foot" class="mono">198-day shuttle</div>
+
+  </div>
+</div>
+<script>
+(function(){
+  const tl = gsap.timeline({ paused: true });
+  const E = "power3.out";
+
+  const X=[128,378,628];
+  tl.set("#die",{x:X[0],y:308},0);
+  tl.to("#f0",{borderColor:"#d4a36e",duration:.3},0.3);
+  tl.to("#die",{x:X[1],duration:1.1,ease:"power2.inOut"},2.0);
+  tl.to("#f1",{borderColor:"#d4a36e",duration:.3},3.0);
+  tl.to("#die",{x:X[2],duration:1.1,ease:"power2.inOut"},4.2);
+  tl.to("#f2",{borderColor:"#d4a36e",duration:.3},5.2);
+  tl.to(["#f1","#f2"],{borderColor:"#3d453b",duration:.5},7.0);
+  tl.to("#die",{opacity:0,duration:.3},7.0);
+  tl.set("#die",{x:X[0]},7.35);
+  tl.to("#die",{opacity:1,duration:.3},7.4);
+
+  window.__timelines["second-source"] = tl;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Render this design specification exactly as a photograph.
+
+DESIGN SPEC
+Canvas: landscape 3:2.
+Style: Photorealistic product/scene photograph, low-key lighting on a near-black cool background (#101212), one warm copper rim light (#d4a36e), shallow depth of field, crisp detail, restrained and engineering-grade, no people.
+
+SCENE: Extreme macro of a single small square black leadless QFN package, 9 mm square and thin, resting at a slight angle just above its bare PCB footprint: a square of 64 fine copper pads, sixteen per side, around one large exposed ground pad in the centre. The package underside edge shows flush metal contacts, no protruding leads.
+
+RULES: absolutely no text, no letters, no numbers, no logos, no brand names, no readable displays or screens, no chip markings, no watermark; no neon, no sci-fi holograms; no blue light.

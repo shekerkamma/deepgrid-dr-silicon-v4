@@ -1,0 +1,9 @@
+Render this design specification exactly as a photograph.
+
+DESIGN SPEC
+Canvas: landscape 3:2.
+Style: Photorealistic product/scene photograph, low-key lighting on a near-black cool background (#101212), one warm copper rim light (#d4a36e), shallow depth of field, crisp detail, restrained and engineering-grade, no people.
+
+SCENE: A row of four modern electricity smart meters mounted on a dark utility wall at dusk, one meter open with its small metrology circuit board visible; beyond an open doorway, out of focus, a distribution transformer and overhead power lines against a dark sky. Meter displays are dark and blank.
+
+RULES: absolutely no text, no letters, no numbers, no logos, no brand names, no readable displays or screens, no chip markings, no watermark; no neon, no sci-fi holograms; no blue light.

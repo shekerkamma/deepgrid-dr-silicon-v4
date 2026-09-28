@@ -1,0 +1,101 @@
+/* v3: modern type, the platform site's tokens mapped onto DG32's palette, and the dropdown menu.
+   Loaded last, so it overrides by order, not by specificity games. */
+:root {
+  /* type: self-hosted variable fonts in place of Georgia / Arial / system mono */
+  --font-display: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
+  --font-text: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --serif: var(--font-display);
+  --font-sans: var(--font-text);
+  /* the platform's tokens, on DG32's colours (DESIGN.md) */
+  --ink: #eeeae2;            /* paper: text on the dark ground */
+  --ink-3: #8c9488;          /* tertiary text, 4.6:1 on surface */
+  --surface: #191d1b;
+  --surface-2: #232825;
+  --line: #3d453b;
+  --line-soft: #3d453b99;
+  --bg: #101212;
+}
+body { font-family: var(--font-text); font-feature-settings: 'cv11', 'ss01'; }
+h1, h2, h3.dr-group-name, .dr-h2 { font-family: var(--font-display); }
+.mono, .dr-kicker, .num, code, kbd { font-family: var(--font-mono); }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* ------------------------------------------------------------------ menu */
+.main-nav { display: block; padding: 0 clamp(16px, 4.3%, 64px); overflow: visible; position: sticky; top: 0; z-index: 30; background: #101613; border-bottom: 1px solid var(--line-soft); }
+.mega-nav { display: flex; align-items: stretch; gap: .1rem; min-height: 3.5rem; max-width: 1600px; margin: 0 auto; }
+.mega-nav > a, .mega-trigger { display: inline-flex; align-items: center; gap: .4rem; padding: .8rem .95rem; font: 500 var(--sc-t-control)/1 var(--font-text); color: var(--ink-2); background: transparent; border: 0; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; transition: color .15s ease, border-color .15s ease; }
+.mega-nav > a:hover, .mega-trigger:hover, .mega-trigger[aria-expanded='true'] { color: var(--ink); }
+.mega-nav > a.active, .mega-trigger.active { color: var(--ink); border-bottom-color: var(--copper); }
+.mega-trigger svg { transition: transform .15s ease; }
+.mega-trigger[aria-expanded='true'] svg { transform: rotate(180deg); }
+.mega-home img { width: 20px; height: 20px; object-fit: contain; }
+.mega-link { margin-left: auto; }
+.mega-item { position: relative; display: flex; }
+.mega-panel { position: absolute; left: 0; top: 100%; width: min(24rem, calc(100vw - 24px)); padding: .9rem 1rem 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 0 0 8px 8px; box-shadow: 0 24px 48px rgb(0 0 0 / .45); z-index: 40; }
+.mega-panel[hidden] { display: none; }
+.mega-panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .1rem; }
+.mega-panel a { display: grid; gap: .15rem; padding: .5rem .6rem; margin-inline: -.6rem; border-radius: 6px; color: var(--ink); }
+.mega-panel a span { font-size: var(--sc-t-control); }
+.mega-panel a small { font-size: var(--sc-t-meta); color: var(--ink-3); line-height: 1.45; }
+@media (hover: hover) { .mega-panel a:hover { background: var(--surface-2); } }
+.mega-nav :focus-visible { outline: 2px solid var(--copper); outline-offset: -2px; }
+@media (max-width: 1100px) { .mega-nav > a, .mega-trigger { padding-inline: .6rem; } }
+/* phone: the header's menu button opens the sheet; the bar itself hides */
+@media (max-width: 900px) { .main-nav { display: none; } }
+.mobile-sheet { overflow-y: auto; overscroll-behavior: contain; }
+.mobile-sheet .mega-nav { display: grid; gap: 0; max-width: none; min-height: 0; }
+.mobile-sheet .mega-nav > a, .mobile-sheet .mega-trigger { justify-content: space-between; width: 100%; padding: .95rem 0; border-bottom: 1px solid var(--line); font-size: var(--sc-t-body); }
+.mobile-sheet .mega-nav > a { justify-content: flex-start; gap: .6rem; }
+.mobile-sheet .mega-link { margin-left: 0; }
+.mobile-sheet .mega-item { display: grid; }
+.mobile-sheet .mega-panel { position: static; width: auto; padding: .25rem 0 .75rem; background: none; border: 0; box-shadow: none; translate: none !important; }
+.mobile-sheet .mega-panel a small { display: none; }
+@media (prefers-reduced-motion: reduce) { .mega-nav > a, .mega-trigger, .mega-trigger svg { transition: none; } }
+
+/* Videos: the jump bar to each group */
+.cp-vnav { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.5rem; }
+.cp-vnav a { display: inline-flex; align-items: center; gap: .35rem; min-height: 40px; padding: .45rem .8rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink-2); font-size: var(--sc-t-control); }
+@media (hover: hover) { .cp-vnav a:hover { border-color: var(--copper); color: var(--ink); } }
+
+/* 404 */
+.nf-page { min-height: 70vh; display: grid; align-content: center; gap: 1rem; padding-block: 4rem; max-width: 46rem; }
+.nf-page h1 { font-family: var(--font-display); font-size: var(--sc-t-hero); margin: 0; color: var(--ink); }
+.nf-page p { color: var(--ink-2); margin: 0; }
+.nf-links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+.nf-links a { min-height: 44px; display: inline-flex; align-items: center; padding: .55rem .9rem; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: var(--surface); }
+@media (hover: hover) { .nf-links a:hover { border-color: var(--copper); } }
+
+/* three.js scenes (app/three) */
+.s3 { margin: 0; display: grid; gap: .6rem; }
+.s3-stage { position: relative; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: radial-gradient(ellipse at 50% 45%, #29302b, #121615 72%); touch-action: pan-y; cursor: grab; }
+.s3-stage:active { cursor: grabbing; }
+.s3-stage:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+.s3-stage canvas { display: block; width: 100%; height: 100%; }
+.s3-labels { position: absolute; inset: 0; pointer-events: none; }
+.s3-label { position: absolute; left: 0; top: 0; padding: .15rem .45rem; border-radius: 4px; background: #101212cc; font: 500 var(--sc-t-meta)/1.3 var(--font-mono); letter-spacing: .04em; white-space: nowrap; color: var(--ink-2); border: 1px solid var(--line-soft); }
+.s3-label.is-copper { color: var(--copper); }
+.s3-label.is-teal { color: var(--cpu, #2f9e8c); }
+.s3-fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: 2rem; margin: 0; color: var(--ink-2); text-align: center; }
+.s3-fallback[hidden] { display: none; }
+.s3-caption { color: var(--ink-3); font-size: var(--sc-t-meta); line-height: 1.5; max-width: 72ch; }
+.s3-controls { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
+.s3-controls button { min-height: 36px; padding: .4rem .75rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink-2); font-size: var(--sc-t-control); cursor: pointer; }
+.s3-controls button[aria-pressed='true'] { border-color: var(--copper); color: var(--ink); background: var(--surface-2); }
+@media (hover: hover) { .s3-controls button:hover { border-color: var(--copper); color: var(--ink); } }
+.s3-block { margin: 2.5rem 0; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(1.25rem, 3vw, 2.5rem); align-items: center; }
+.s3-block h2 { margin: 0 0 .5rem; font-family: var(--font-display); font-size: var(--sc-t-section); color: var(--ink); }
+.s3-block p { margin: 0; color: var(--ink-2); }
+@media (max-width: 900px) { .s3-block { grid-template-columns: 1fr; } }
+.s3-side-signals { margin-top: .75rem !important; padding: .6rem .8rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); font-size: var(--sc-t-control); }
+.s3-silicon { height: 400px; }
+.s3-silicon > div { width: 100%; height: 100%; }
+.s3-app { height: 380px; }
+.s3-app > div { width: 100%; height: 100%; }
+
+/* Native modal semantics provide focus containment and Escape dismissal. */
+dialog.mobile-sheet{margin:0 0 0 auto;max-height:100dvh;height:100dvh;max-width:100vw;border:0;color:var(--foreground);padding-top:max(5rem,env(safe-area-inset-top));padding-bottom:max(1.5rem,env(safe-area-inset-bottom))}
+dialog.mobile-sheet::backdrop{background:rgb(0 0 0 / .55)}
+.mobile-sheet-close{min-width:44px;min-height:44px}
+@media(max-width:900px){.topbar{padding-top:max(.65rem,env(safe-area-inset-top))}}

@@ -1,0 +1,9 @@
+Render this design specification exactly as a photograph.
+
+DESIGN SPEC
+Canvas: landscape 3:2, near-black background.
+Style: Photorealistic product photograph, low-key studio lighting on a near-black background (#101212, cool and very slightly green), a single warm copper rim light (#d4a36e), shallow depth of field, crisp macro detail, restrained and engineering-grade, no people.
+
+SCENE: a compact brushless-motor drive circuit board seen at a low three-quarter angle. At its centre, one small square black leadless QFN microcontroller package, 9 mm square and very thin, sitting flat on the board with NO protruding leads: only tiny flat metal pads flush along the bottom edge of each side, sharply in focus. Around it: six small power MOSFETs in two rows, a gate-driver chip, a few ceramic capacitors and a three-pin motor connector, all slightly softer. Copper traces and pads catch the copper rim light. At the right edge, out of focus, a small brushless outrunner motor with visible copper windings. Left third of the frame falls away to near-black so the page can set text there.
+
+RULES: absolutely no text, no letters, no numbers, no logos, no brand names, no chip markings, no watermark, no labels anywhere in the image; no glowing neon, no sci-fi hologram effects; no teal or blue light.

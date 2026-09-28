@@ -1,0 +1,9 @@
+Render this design specification exactly as a photograph.
+
+DESIGN SPEC
+Canvas: landscape 3:2.
+Style: Photorealistic product/scene photograph, low-key lighting on a near-black cool background (#101212), one warm copper rim light (#d4a36e), shallow depth of field, crisp detail, restrained and engineering-grade, no people.
+
+SCENE: Macro of an industrial controller circuit board inside a DIN-rail enclosure: several voltage regulators and inductors in a row, and beside them one small square supervisor chip, sharply in focus, with fine copper traces running from each regulator to it. Everything else softer.
+
+RULES: absolutely no text, no letters, no numbers, no logos, no brand names, no readable displays or screens, no chip markings, no watermark; no neon, no sci-fi holograms; no blue light.

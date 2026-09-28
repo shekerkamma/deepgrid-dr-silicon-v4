@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=800, height=450"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgia.ttf") format("truetype");font-weight:400;font-style:normal}
+@font-face{font-family:"DG Serif";src:url("assets/fonts/georgiai.ttf") format("truetype");font-weight:400;font-style:italic}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arial.ttf") format("truetype");font-weight:400}
+@font-face{font-family:"DG Sans";src:url("assets/fonts/arialbd.ttf") format("truetype");font-weight:700}
+@font-face{font-family:"DG Mono";src:url("assets/fonts/cour.ttf") format("truetype");font-weight:400}
+
+body{margin:0;background:#101212}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#101212;color:#eeeae2;font-family:"DG Sans",sans-serif}
+#grid{position:absolute;inset:0;opacity:.4;background-image:linear-gradient(#3d453b22 1px,transparent 1px),linear-gradient(90deg,#3d453b22 1px,transparent 1px);background-size:40px 40px}
+.mono{font-family:"DG Mono",monospace;letter-spacing:2px;text-transform:uppercase}
+.box{position:absolute;border:2px solid #3d453b;border-radius:10px;background:#191d1b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
+
+#cap{position:absolute;left:48px;top:36px;font-size:32px;color:#a7b09f}
+#rate{position:absolute;left:48px;top:88px;font-family:"DG Serif",serif;font-size:104px;line-height:1;color:#eeeae2}
+#rate span{position:absolute;left:0;top:0;white-space:nowrap}
+#bar{position:absolute;left:48px;top:250px;width:704px;height:56px;border-radius:6px;background:#2f9e8c;overflow:hidden}
+#hw{position:absolute;left:0;top:0;height:100%;width:6%;background:#bf7f3b}
+#hwl{position:absolute;left:48px;top:326px;font-size:34px;color:#bf7f3b}
+#cpul{position:absolute;right:48px;top:326px;font-size:34px;color:#2f9e8c;text-align:right}
+#cpul span{position:absolute;right:0;top:0;white-space:nowrap}
+#r1,#r2,#r3,#c1,#c2,#c3{opacity:0}
+
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="loop-cost" data-start="0" data-width="800" data-height="450" data-duration="8">
+  <div id="grid" class="clip" data-start="0" data-duration="8" data-track-index="0"></div>
+  <div id="stage" class="clip" data-start="0" data-duration="8" data-track-index="1">
+
+    <div id="cap" class="mono">One loop · 50 MHz</div>
+    <div id="rate"><span id="r0">10 kHz</span><span id="r1">20 kHz</span><span id="r2">50 kHz</span><span id="r3">100 kHz</span></div>
+    <div id="bar"><div id="hw"></div></div>
+    <div id="hwl" class="mono">Hardware ~300</div>
+    <div id="cpul" class="mono"><span id="c0">CPU ~4,700</span><span id="c1">CPU ~2,200</span><span id="c2">CPU ~700</span><span id="c3">CPU ~200</span></div>
+
+  </div>
+</div>
+<script>
+(function(){
+  const tl = gsap.timeline({ paused: true });
+  const E = "power3.out";
+
+  // resting state = 10 kHz; step through the rates, then return.
+  const W=[6,12,30,60];
+  [[1,1.6],[2,3.2],[3,4.8]].forEach(([i,t])=>{
+    tl.to(["#r"+(i-1),"#c"+(i-1)],{opacity:0,duration:.25},t);
+    tl.fromTo(["#r"+i,"#c"+i],{opacity:0,y:10},{opacity:1,y:0,duration:.35,ease:E,immediateRender:false},t+.2);
+    tl.to("#hw",{width:W[i]+"%",duration:.7,ease:"power2.inOut"},t);
+  });
+  tl.to(["#r3","#c3"],{opacity:0,duration:.25},7.1);
+  tl.to("#hw",{width:"6%",duration:.7,ease:"power2.inOut"},7.1);
+  tl.to(["#r0","#c0"],{opacity:1,duration:.35},7.4);
+
+  window.__timelines["loop-cost"] = tl;
+})();
+</script>
+</body>
+</html>

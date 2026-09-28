@@ -1,0 +1,68 @@
+/* Enquiry form for /contact. The site this page was ported from posted to /api/enquiry, which
+   cannot exist on a static GitHub Pages host, so that form silently discarded every submission.
+   This one composes a mailto: from the fields — no backend, no third-party processor, nothing
+   to go stale. Tokens are the ones globals.css and dr.css already define. */
+.dr-enq {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 26px;
+}
+.dr-enq-wide { grid-column: 1 / -1; }
+.dr-enq-field { display: flex; flex-direction: column; gap: 7px; }
+.dr-enq-field label {
+  font-size: var(--text-meta);
+  letter-spacing: var(--sc-track-meta);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.dr-enq-field input,
+.dr-enq-field select,
+.dr-enq-field textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: var(--sc-radius-md);
+  background: var(--popover);
+  color: var(--foreground);
+  font-family: inherit;
+  font-size: var(--sc-t-body);
+  line-height: var(--sc-lh-body);
+}
+.dr-enq-field textarea { min-height: 116px; resize: vertical; }
+.dr-enq-field input:focus-visible,
+.dr-enq-field select:focus-visible,
+.dr-enq-field textarea:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.dr-enq-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+.dr-enq-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--ink-2);
+  font-size: var(--sc-t-body);
+  line-height: var(--sc-lh-body);
+}
+@media (max-width: 720px) {
+  .dr-enq { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* WCAG 2.5.8 (target size, minimum). dr.css zeroes .text-link padding inside .dr-hub-footer,
+   which lands the control at 23px high — one pixel under the 24px floor, which the route gate
+   catches at phone width. .dr-hub-footer is used only by this page, so the fix is scoped here. */
+.dr-hub-footer .text-link { min-height: 24px; }
+
+/* Inline validation: errors render next to their field and are announced through
+   aria-describedby; the first invalid field takes focus on submit. */
+.dr-enq-error { margin: 0; color: #e8a08a; font-size: var(--text-meta); line-height: 1.45; }
+.dr-enq-field [aria-invalid="true"] { border-color: #e8a08a; }
+.dr-enq-field input::placeholder,
+.dr-enq-field textarea::placeholder { color: var(--muted-foreground); opacity: 1; }
