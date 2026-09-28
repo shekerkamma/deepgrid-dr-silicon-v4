@@ -78,8 +78,9 @@ export function Shell({
           <span className="status-dot">FIRST SILICON · SEP 2026</span>
         </div>
         <a className="contact-link" href={href('/contact')}>Discuss your application <ArrowUpRight size={17}/></a>
-        <button ref={menuButton} className="mobile-menu" aria-label="Open navigation" aria-expanded={menu} aria-controls="mobile-navigation" onClick={() => setMenu(true)}>
-          <span>{here.id === 'home' ? 'Deepgrid Semi' : here.label}</span><Menu/>
+        <button ref={menuButton} className="mobile-menu" aria-expanded={menu} aria-controls="mobile-navigation" onClick={() => setMenu(true)}>
+          {/* The accessible name starts with the visible page name (WCAG 2.5.3), then says what the button does. */}
+          <span>{here.id === 'home' ? 'Deepgrid Semi' : here.label}</span><span className="sr-only">, open navigation</span><Menu aria-hidden="true"/>
         </button>
       </header>
 

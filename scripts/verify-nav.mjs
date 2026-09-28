@@ -99,14 +99,14 @@ async function landed(p, want, via) {
 {
   const p = await b.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
   await p.goto(BASE, { waitUntil: 'networkidle' });
-  await p.click('[aria-label="Open navigation"]');
+  await p.click('button[aria-controls="mobile-navigation"]');
   const items = await p.$$eval('.mobile-sheet nav.mega-nav a', (as) => as.map((a) => a.href));
   const groups = await p.$$eval('.mobile-sheet .mega-trigger', (xs) => xs.map((x) => x.getAttribute('aria-controls')));
   let n = 0;
   for (const href of items) {
     if (new URL(href).origin !== new URL(BASE).origin) continue;
     await p.goto(BASE, { waitUntil: 'networkidle' });
-    await p.click('[aria-label="Open navigation"]');
+    await p.click('button[aria-controls="mobile-navigation"]');
     const sel = `.mobile-sheet a[href="${new URL(href).pathname}"]`; // same-site only
     const a = p.locator(sel).first();
     if (!(await a.isVisible())) {
