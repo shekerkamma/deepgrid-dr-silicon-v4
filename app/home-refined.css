@@ -1,5 +1,5 @@
 /* Homepage: established copper-on-ink tokens, one signature fault walkthrough. */
-.dg-home{--home-gutter:clamp(22px,6vw,96px);max-width:1600px;margin-inline:auto}
+.dg-home{--home-gutter:var(--gutter);max-width:1600px;margin-inline:auto}
 .dg-home h1,.dg-home h2,.dg-home h3{font-family:var(--font-display);font-weight:400}
 .dg-home p{color:var(--ink-2);max-width:64ch}.dg-home h2{font-size:clamp(2rem,3.3vw,3.15rem);line-height:1.12}
 .home-intro{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;padding:3.5rem var(--home-gutter) 2.75rem;gap:2rem}

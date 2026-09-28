@@ -15,6 +15,9 @@
   --line: #3d453b;
   --line-soft: #3d453b99;
   --bg: #101212;
+  /* one gutter for chrome, pages and the home refinement, measured from the 1600px column */
+  --gutter: clamp(20px, 6vw, 96px);
+  --wrap: 1600px;
 }
 body { font-family: var(--font-text); font-feature-settings: 'cv11', 'ss01'; }
 h1, h2, h3.dr-group-name, .dr-h2 { font-family: var(--font-display); }
@@ -23,7 +26,7 @@ h1, h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }
 
 /* ------------------------------------------------------------------ menu */
-.main-nav { display: block; padding: 0 clamp(16px, 4.3%, 64px); overflow: visible; position: sticky; top: 0; z-index: 30; background: #101613; border-bottom: 1px solid var(--line-soft); }
+.main-nav { display: block; padding: 0; overflow: visible; position: sticky; top: 0; z-index: 30; background: #101613; border-bottom: 1px solid var(--line-soft); }
 .mega-nav { display: flex; align-items: stretch; gap: .1rem; min-height: 3.5rem; max-width: 1600px; margin: 0 auto; }
 .mega-nav > a, .mega-trigger { display: inline-flex; align-items: center; gap: .4rem; padding: .8rem .95rem; font: 500 var(--sc-t-control)/1 var(--font-text); color: var(--ink-2); background: transparent; border: 0; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; transition: color .15s ease, border-color .15s ease; }
 .mega-nav > a:hover, .mega-trigger:hover, .mega-trigger[aria-expanded='true'] { color: var(--ink); }
@@ -99,3 +102,10 @@ dialog.mobile-sheet{margin:0 0 0 auto;max-height:100dvh;height:100dvh;max-width:
 dialog.mobile-sheet::backdrop{background:rgb(0 0 0 / .55)}
 .mobile-sheet-close{min-width:44px;min-height:44px}
 @media(max-width:900px){.topbar{padding-top:max(.65rem,env(safe-area-inset-top))}}
+
+/* ---------------------------------------------------------------- gutter */
+/* Header, menu, breadcrumbs, page body and footer share one left edge. Full-bleed bars pad to
+   the 1600px column's edge; capped blocks pad by the gutter inside it. */
+.topbar, .main-nav, .footer { padding-inline: max(var(--gutter), calc((100% - var(--wrap)) / 2 + var(--gutter))); }
+.page-wrap { padding-inline: var(--gutter); }
+.breadcrumbs, .section-pagination, html .technology-nav { box-sizing: border-box; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }

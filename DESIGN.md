@@ -190,8 +190,11 @@ an evidence grade, a file name. Prose never sets itself in monospace for texture
 
 ## Layout
 
-A single centred column, `page-wrap`, capped at 1600px with an 8% side gutter that tightens to 5%
-below 650px, and body text capped at a 64ch measure regardless of viewport. Sections are separated by generous vertical space
+A single centred column, `page-wrap`, capped at 1600px (`--wrap`) with one side gutter,
+`--gutter: clamp(20px, 6vw, 96px)`, and body text capped at a 64ch measure regardless of viewport.
+The header, menu bar, breadcrumbs, section tabs, page body, homepage and footer all start at the same
+left edge: full-bleed bars pad to the 1600px column's edge plus the gutter, capped blocks pad by the
+gutter inside it (`app/v3.css`, "gutter"). A new block takes the token, never its own percentage. Sections are separated by generous vertical space
 and hairline rules rather than boxes.
 
 The type scale is fluid between 1.5rem and 3.5rem via `clamp()`, so there is no heading breakpoint
