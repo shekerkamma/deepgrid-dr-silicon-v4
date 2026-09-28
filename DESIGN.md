@@ -153,14 +153,16 @@ reaches every place copper is implied.
 
 ## Typography
 
-**Display Font:** Georgia, with Times New Roman and a generic serif behind it
-**Body Font:** Arial, with Helvetica and a generic sans behind it
-**Label / Mono Font:** the platform monospace stack
+**Display Font:** Newsreader Variable (`--font-display`), with Georgia and Times New Roman behind it
+**Body Font:** Inter Variable (`--font-text`), with system-ui behind it
+**Label / Mono Font:** JetBrains Mono Variable (`--font-mono`), with the platform monospace stack
+behind it
 
 **Character:** a journal pairing rather than a product one. The serif gives headings the authority
 of a printed specification; the sans keeps long technical body text quiet and legible; the monospace
-marks everything a machine emitted, which on this site is most of the numbers. Both display and body
-faces are system fonts, so the page renders instantly with no font loading and no layout shift.
+marks everything a machine emitted, which on this site is most of the numbers. All three faces are
+self-hosted through `@fontsource-variable` (imported in `app/layout.tsx`, tokens in `app/v3.css`), so
+no request leaves the site; the Georgia, system-ui and platform-mono fallbacks cover the swap.
 
 ### Hierarchy
 - **Display** (serif, `clamp(2.4rem, 3.8vw, 3.5rem)`, line-height 1.05, tracking -0.035em): the
