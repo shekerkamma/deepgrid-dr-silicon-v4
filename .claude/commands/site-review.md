@@ -24,6 +24,6 @@ Files changed, committed and uncommitted, against origin/main:
 
 1. Work out the changes to review. If a range was given, use `git diff --stat <range>` and
    `git log --oneline <range>`; otherwise use the state above. If there are no changes at all, say so and stop.
-2. Launch the `design-review` subagent with: the list of changed files, the commit subjects, and the scope
+2. Launch the `site-review` subagent with: the list of changed files, the commit subjects, and the scope
    rule from its instructions (shared files mean a representative route set).
 3. Reply with the agent's markdown report and nothing else.

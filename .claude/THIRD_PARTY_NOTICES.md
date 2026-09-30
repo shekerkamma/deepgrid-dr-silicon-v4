@@ -1,6 +1,6 @@
 # Third-party notices
 
-`.claude/agents/design-review.md` and `.claude/commands/design-review.md` adapt the structure of the
+`.claude/agents/site-review.md` and `.claude/commands/site-review.md` adapt the structure of the
 design-review workflow in https://github.com/OneRedOak/claude-code-workflows (commit 6a65344),
 rewritten for this site. Licence of the original:
 

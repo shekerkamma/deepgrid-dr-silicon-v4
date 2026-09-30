@@ -34,7 +34,7 @@ Right after any front-end change, before saying it is done:
 6. **Say what you checked**, with the screenshot paths, and anything you could not check.
 
 ### Full design review
-Run `/design-review` (or the `design-review` subagent) before pushing significant UI work to `main`:
+Run `/site-review` (or the `site-review` subagent) before pushing significant UI work to `main`:
 it measures every affected route at 1440/768/390 with axe-core, runs the menu gate when navigation
 changed, inspects the live pages and reports Blockers / High / Medium / Nitpicks with evidence.
 The review is read-only; fixes happen afterwards, in this session.

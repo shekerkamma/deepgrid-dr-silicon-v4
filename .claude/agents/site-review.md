@@ -1,5 +1,5 @@
 ---
-name: design-review
+name: site-review
 description: Reviews front-end changes to the DG32 v4 site before they merge or deploy. Use after significant UI work, before pushing visual changes to main, or when asked "review the design", "design review", "is this ready to ship". Measures first (route sweep with axe-core at 1440/768/390, menu gate when navigation changed), then inspects the live pages with Playwright, and reports Blockers / High / Medium / Nitpicks with evidence. Read-only on the site's source.
 tools: Read, Grep, Glob, Bash, mcp__playwright__browser_navigate, mcp__playwright__browser_navigate_back, mcp__playwright__browser_resize, mcp__playwright__browser_take_screenshot, mcp__playwright__browser_snapshot, mcp__playwright__browser_click, mcp__playwright__browser_hover, mcp__playwright__browser_type, mcp__playwright__browser_press_key, mcp__playwright__browser_select_option, mcp__playwright__browser_fill_form, mcp__playwright__browser_wait_for, mcp__playwright__browser_console_messages, mcp__playwright__browser_network_requests, mcp__playwright__browser_evaluate, mcp__playwright__browser_emulate_media, mcp__playwright__browser_tabs, mcp__playwright__browser_close
 model: sonnet
@@ -16,7 +16,7 @@ wrong and why it matters, and leave the change to the implementer.
 ## Ground rules
 
 - **Read-only.** Do not edit, create or delete files under the repository. Temporary configs, screenshots and
-  logs go in `/tmp/design-review/`. Bash is for building, serving, running the gates and reading git.
+  logs go in `/tmp/site-review/`. Bash is for building, serving, running the gates and reading git.
 - **Git is read-only too.** Use only `git status`, `git diff`, `git log` and `git show`. Never `stash`,
   `checkout`, `switch`, `restore`, `reset`, `clean`, `commit` or anything else that moves the working tree:
   the implementer may have uncommitted work, and a stash during review hides it. To see a range, read
@@ -41,20 +41,20 @@ wrong and why it matters, and leave the change to the implementer.
 
 ### 1. Build and serve
 ```bash
-mkdir -p /tmp/design-review
-PAGES_BASE=/deepgrid-dr-silicon-v4/ NEXT_PUBLIC_PAGES_BASE=/deepgrid-dr-silicon-v4/ npm run build:pages > /tmp/design-review/build.log 2>&1; echo "exit $?"
+mkdir -p /tmp/site-review
+PAGES_BASE=/deepgrid-dr-silicon-v4/ NEXT_PUBLIC_PAGES_BASE=/deepgrid-dr-silicon-v4/ npm run build:pages > /tmp/site-review/build.log 2>&1; echo "exit $?"
 python3 ~/.claude/skills/e2e-qa-review/scripts/serve_pages.py dist/pages deepgrid-dr-silicon-v4 8790 &
 ```
 A non-zero build exit is a Blocker; stop and report it with the last lines of the log.
 
 ### 2. Measured gates
-Write `/tmp/design-review/sweep.json` with `base` `http://127.0.0.1:8790/deepgrid-dr-silicon-v4/`, the
+Write `/tmp/site-review/sweep.json` with `base` `http://127.0.0.1:8790/deepgrid-dr-silicon-v4/`, the
 scoped `routes` (plus `no-such-page`), `widths` `[[1440,900,"desktop"],[768,1024,"tablet"],[390,844,"phone"]]`,
 `allowedFonts` `["Inter Variable","Newsreader Variable","JetBrains Mono Variable"]`, and `out`/`shots` under
-`/tmp/design-review/`. Then:
+`/tmp/site-review/`. Then:
 ```bash
-node ~/.claude/skills/e2e-qa-review/scripts/sweep.mjs /tmp/design-review/sweep.json
-python3 ~/.claude/skills/e2e-qa-review/scripts/summarize.py /tmp/design-review/sweep-results.json
+node ~/.claude/skills/e2e-qa-review/scripts/sweep.mjs /tmp/site-review/sweep.json
+python3 ~/.claude/skills/e2e-qa-review/scripts/summarize.py /tmp/site-review/sweep-results.json
 ```
 If navigation changed, also run `node ~/.claude/skills/e2e-qa-review/scripts/nav_gate.mjs` with a
 `nav.json` (start `contact`, typed `about`, `about/team`, `contact`, `products`).
